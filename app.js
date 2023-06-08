@@ -7,6 +7,7 @@ const xss = require("xss-clean");
 const hpp = require("hpp");
 const compression = require("compression");
 const cors = require("cors");
+const path = require("path");
 
 const dotenv = require("dotenv").config({ path: "./config.env" }); // Get all env var in this file & save it
 const ApiErrors = require("./Utils/apiErrors");
@@ -19,6 +20,11 @@ const app = express();
 
 // BuiltIn Middleware - For parsing application/json
 app.use(express.json());
+
+// BuiltIn Middleware - To serve static files such as images, CSS files, and Js files
+app.use(express.static(path.join(__dirname, "Public")));
+app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "Views"));
 
 // Third Party Middleware - Logging Http Requests
 if (process.env.NODE_ENV === "development") app.use(morgan("dev"));

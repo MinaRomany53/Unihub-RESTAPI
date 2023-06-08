@@ -1,0 +1,79 @@
+.form--main {
+  min-height: 89vh;
+  padding: 3rem;
+}
+.form-box {
+  margin: 0 auto;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  max-width: 50rem;
+  border-radius: 0.5rem;
+}
+.form-box .image {
+  display: flex;
+  justify-content: center;
+}
+.form-box img {
+  width: 15rem;
+}
+.form-box .form {
+  /* background-color: red; */
+  padding: 1rem 0;
+}
+.form-box .form .field {
+  padding: 1rem 0;
+}
+.form-box .form .field label {
+  font-size: 1.4em;
+}
+.form-box .form .field input {
+  display: inline-block;
+  width: 100%;
+  height: 4.5rem;
+  border: none;
+  padding-left: 2rem;
+  border-radius: 0.5rem;
+  margin: 0.8rem 0;
+  background-color: #f6f6f6;
+  font-size: 1.4rem;
+  caret-color: #915edf;
+}
+.form-box .form .field input:active,
+.form-box .form .field input:focus {
+  outline: none;
+  border: none;
+}
+.form-box .form .field input::placeholder {
+  font-size: 1.2rem;
+  color: #999;
+}
+.form-box .form .forget_password {
+  position: relative;
+}
+.form-box .form .forget_password a {
+  font-size: 1.2rem;
+  position: absolute;
+  right: 0;
+  top: -10px;
+  color: var(--color-primary);
+}
+
+.form-box .form .submit_btn {
+  margin-top: 1.5rem;
+  padding-left: 0;
+  background-color: var(--color-btns);
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.form-box .form-footer {
+  font-size: 1.4rem;
+}
+.form-box .form-footer p {
+  margin-bottom: 0.5rem;
+}
+.form-box .form-footer a {
+  color: var(--color-primary);
+}

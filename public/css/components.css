@@ -1,0 +1,232 @@
+/* Buttons */
+.btn {
+  border: none;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #915edf;
+  color: #f3f3f3;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+.btn:hover {
+  box-shadow: none;
+}
+
+/* Overlay */
+.overlay {
+  height: 100%;
+  width: 0%;
+  position: fixed;
+  right: 0;
+  top: 0;
+  /* background-color: rgba(0, 0, 0, 0.85); */
+  background-color: #e9e7e8;
+  overflow: hidden;
+  transition: all 0.3s;
+  z-index: 1;
+}
+@media (min-width: 992px) {
+  .overlay {
+    width: 0% !important;
+  }
+}
+
+/* Section Heading*/
+section {
+  padding: 8rem 0;
+}
+.section-heading {
+  text-align: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: 4rem;
+}
+.section-heading h2 {
+  font-size: 3rem;
+}
+.section-heading .svg {
+  width: 7rem;
+  margin-right: 1rem;
+}
+
+/* Start Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+  gap: 4rem;
+  padding: 1rem;
+}
+@media (max-width: 786px) {
+  .search__result .cards {
+    grid-template-columns: 1fr;
+  }
+}
+.card {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card .body {
+  text-decoration: none;
+  color: var(--color-primary);
+}
+.card .img {
+  width: 100%;
+  margin-bottom: 1rem;
+  height: 20rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  object-position: top center;
+}
+.card .box-1-4 {
+  font-size: 1.4rem;
+  color: #777;
+  padding-bottom: 1rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+}
+.card .box-1-4 .price {
+  color: #4caf50;
+}
+.card .box-2-4 {
+  padding: 1rem 0;
+}
+.card .icon {
+  color: var(--color-btns);
+  margin-right: 0.5rem;
+}
+.card .box-2-4 .title {
+  padding-bottom: 1rem;
+  font-size: 1.8rem;
+  text-transform: capitalize;
+}
+.card .box-2-4 .desc {
+  font-size: 1.4rem;
+  color: #777;
+  line-height: 1.6;
+  padding-right: 3rem;
+}
+.card .details-btn {
+  text-decoration: none;
+  padding: 1rem 3rem;
+  font-size: 1.4rem;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25rem;
+}
+
+.card .box-3-4 {
+  padding: 1.5rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: flex-start;
+  align-items: center; */
+}
+.card .box-3-4 .updateItem-btn,
+.card .box-3-4 .deleteItem-btn,
+.card .box-3-4 .closeItem-btn {
+  border: 0;
+  border-radius: 0.8rem;
+  height: 3.5rem;
+  max-height: 100%;
+  padding: 0 1.6rem;
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: all 0.3s;
+}
+.card .box-3-4 .deleteItem-btn {
+  background-color: #b00020;
+}
+.card .box-3-4 .closeItem-btn {
+  margin: 0 1.5rem;
+}
+.card .box-3-4 .icon {
+  margin-right: 1rem;
+  font-size: 1.6rem;
+  color: var(--color-line);
+}
+
+/* End Cards */
+
+/* Big Cards */
+.cards.big {
+  grid-template-columns: repeat(auto-fill, minmax(50rem, 1fr));
+}
+
+.cards.big .img {
+  width: 100%;
+  margin-bottom: 1rem;
+  height: 25rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  object-position: center;
+}
+/* Big Cards */
+
+/* Start Landing-Form */
+.Landing-form {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 2.5rem;
+  max-width: 32rem;
+  border-radius: 5px;
+}
+@media (max-width: 992px) {
+  .Landing-form {
+    max-width: 50rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+.Landing-form .Landing-form_header {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+.Landing-form .form {
+  padding: 2rem 0 1.5rem 0;
+}
+.form input {
+  display: inline-block;
+  width: 100%;
+  height: 4rem;
+  border: none;
+  padding-left: 2rem;
+  border-radius: 5px;
+  margin: 0.8rem 0;
+  background-color: #f6f6f6;
+  font-size: 1.2rem;
+  caret-color: #915edf;
+}
+.form input:active,
+.form input:focus {
+  outline: none;
+  border: none;
+}
+.form input::placeholder {
+  font-size: 1.2rem;
+  color: #999;
+}
+.form .submit-btn {
+  margin-top: 1rem;
+  padding-left: 0;
+  background-color: #915edf;
+  color: #f3f3f3;
+}
+.Landing-form_info {
+  font-size: 1rem;
+  color: #999;
+}
+/* End Landing-Form */

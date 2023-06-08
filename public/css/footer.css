@@ -1,0 +1,102 @@
+/* Start Footer */
+
+footer {
+  border-top: 2px solid var(--color-line);
+  padding-top: 4rem;
+}
+footer .footer-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+footer .footer-content .row-1 {
+  display: flex;
+  flex-direction: column;
+}
+footer .footer-content .row-1 h2 {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 0.9;
+  margin-bottom: 2rem;
+  color: var(--color-primary);
+}
+footer .footer-content .row-1 .social-links {
+  font-size: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+footer .footer-content .row-1 .social-links li a {
+  margin-right: 2rem;
+  transition: all 0.2s;
+  text-decoration: none;
+  color: var(--color-primary);
+}
+footer .footer-content .row-1 .social-links li a:hover {
+  color: var(--color-btns);
+}
+
+footer .footer-content .row-2 {
+  margin-bottom: 4rem;
+}
+footer .footer-content .row-2 .links {
+  display: flex;
+}
+footer .footer-content .row-2 .links li a {
+  padding: 0 2rem;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: var(--color-primary);
+}
+@media (max-width: 576px) {
+  footer .footer-content .row-2 .links {
+    flex-direction: column;
+  }
+}
+footer .footer-content .row-2 .links li a:hover {
+  text-decoration: underline;
+}
+footer .footer-content::after {
+  content: " ";
+  position: absolute;
+  width: 100%;
+  background-color: var(--color-line);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+}
+footer .footer-bottom {
+  height: 4.5rem;
+  padding: 4rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-btn .footer-sign-btn {
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  background-color: #fff;
+  padding: 0 2.5rem;
+  font-size: 1.4rem;
+  height: 4.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.8rem;
+}
+
+footer .signature {
+  margin-top: 3rem;
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  text-align: center;
+  padding-bottom: 3rem;
+}
+/* End Footer */

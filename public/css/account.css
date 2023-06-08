@@ -1,0 +1,65 @@
+.Profile-card .row--1 .seller__info__info .name {
+  margin-bottom: 2rem;
+  font-weight: 800;
+}
+.Profile-card .row--1 .seller__info__info .email {
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  text-align: left;
+}
+.Profile-card .row--1 .seller__info__info .phone {
+  text-align: left;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+.email .icon,
+.phone .icon {
+  color: var(--color-btns);
+  margin-right: 1rem;
+  font-size: 1.6rem;
+}
+.Profile-card .row--1 .seller__info__info .joinat {
+  font-size: 1.2rem;
+}
+.seller__info .row--2 .editProfile-btn,
+.seller__info .row--2 .changePassword-btn,
+.seller__info .row--2 .deleteAccount-btn {
+  background-color: var(--color-btns);
+  border: 0;
+  border-radius: 0.8rem;
+  height: 4.5rem;
+  max-height: 100%;
+  padding: 0 1.6rem;
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: all 0.3s;
+}
+.seller__info .row--2 .deleteAccount-btn {
+  background-color: #b00020;
+}
+.seller__info .row--2 .editProfile-btn .icon,
+.seller__info .row--2 .changePassword-btn .icon,
+.seller__info .row--2 .deleteAccount-btn .icon {
+  margin-right: 1rem;
+  font-size: 1.6rem;
+}
+
+/* Start Items Block */
+.profile-items .profile-items--block:not(:last-child) {
+  padding: 4rem 0;
+  border-bottom: 2px solid var(--color-line);
+}
+.profile-items .profile-items--block:last-child {
+  padding-top: 4rem;
+}
+.profile-items .profile-items--block .no_of_items {
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+/* End Items Block */
