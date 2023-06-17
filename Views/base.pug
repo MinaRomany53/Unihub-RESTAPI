@@ -1,5 +1,42 @@
-html
-  head
-    title= title
-  body
-    h1= message
+doctype html
+head
+  title UniHub | Buy and Sell anywhere in Egypt with UniHub online classifieds
+  meta(charset='UTF-8')
+  meta(name='description' content='UniHub Website - Buy or sell something today!')
+  meta(name='keywords' content='HTML, CSS, JavaScript')
+  meta(name='author' content='Mina Romany')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  // Favicon
+  link(rel='shortcut icon' href='./imgs/icons8-graduation-50.png' type='image/x-icon')
+  // Google Fonts
+  link(href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap' rel='stylesheet')
+  // FontAwesome
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css')
+  // Normailze helpful style sheet
+  link(rel='stylesheet' href='./css/Normalize.css')
+  // Main Style File
+  link(rel='stylesheet' href='./css/main.css')
+
+body 
+  // Include Header
+  include _header
+
+
+
+  // Start Main Content
+  block content   
+
+  // End Main Content
+
+
+
+  // Include Footer Content
+  include _footer
+
+
+  .overlay
+  // Script File
+  script(src='./JS/navbar.js')
+  script(src='./JS/landing-slider.js')
+  script(src='./JS/slider.js')

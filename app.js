@@ -15,16 +15,18 @@ const ApiErrors = require("./Utils/apiErrors");
 const usersRouter = require("./Routes/usersRoutes");
 const itemsRouter = require("./Routes/itemsRoutes");
 const chatRoomsRouter = require("./Routes/chatRoomsRoutes");
+const { read } = require("fs");
 
 const app = express();
 
 // BuiltIn Middleware - For parsing application/json
 app.use(express.json());
 
-// BuiltIn Middleware - To serve static files such as images, CSS files, and Js files
-app.use(express.static(path.join(__dirname, "Public")));
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "Views"));
+
+// BuiltIn Middleware - To serve static files such as images, CSS files, and Js files
+app.use(express.static(path.join(__dirname, "Public")));
 
 // Third Party Middleware - Logging Http Requests
 if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
@@ -59,6 +61,16 @@ app.use((req, res, next) => {
   const date = new Date().toISOString();
   req.date = date;
   next();
+});
+
+app.use("/home", (req, res, next) => {
+  res.status(200).render("home", {
+    title: "Welcome To Home Page",
+  });
+});
+
+app.use("/", (req, res, next) => {
+  res.status(200).render("base");
 });
 
 // Router-Level Middleware
