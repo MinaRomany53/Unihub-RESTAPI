@@ -15,6 +15,7 @@ const ApiErrors = require("./Utils/apiErrors");
 const usersRouter = require("./Routes/usersRoutes");
 const itemsRouter = require("./Routes/itemsRoutes");
 const chatRoomsRouter = require("./Routes/chatRoomsRoutes");
+const viewsRouter = require("./Routes/viewsRoutes");
 const { read } = require("fs");
 
 const app = express();
@@ -63,20 +64,11 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/home", (req, res, next) => {
-  res.status(200).render("home", {
-    title: "Welcome To Home Page",
-  });
-});
-
-app.use("/", (req, res, next) => {
-  res.status(200).render("base");
-});
-
 // Router-Level Middleware
 app.use("/api/v1/users", usersRouter);
 app.use("/api/v1/items", itemsRouter);
 app.use("/api/v1/chatRooms", chatRoomsRouter);
+app.use("/", viewsRouter);
 
 // Handling Unhandled Routes
 app.all("*", (req, res, next) => {
