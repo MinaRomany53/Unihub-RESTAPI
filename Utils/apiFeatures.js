@@ -39,6 +39,7 @@ class ApiFeatures {
 
   // 4) Pagination - Divide documents into pages (user friendly)
   paginate() {
+    if (this.requestedQuery.page === "0") return this;
     const limit = this.requestedQuery.limit || 10;
     const page = this.requestedQuery.page || 1;
     this.query = this.query.skip((page - 1) * limit).limit(limit);

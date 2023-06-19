@@ -36,32 +36,33 @@ exports.getHomePage = async (req, res, next) => {
   });
 };
 
-exports.viewMoreItems = async (req, res, next) => {
-  let items;
-  if (req.params.category === "All_Classifieds") {
-    items = await Item.find({ approved: { $ne: false } });
-  } else {
-    items = await Item.find({
-      category: req.params.category,
-      approved: { $ne: false },
-    });
-  }
-
-  res.status(200).render("items", {
-    items: items,
-    heading: req.params.category,
-  });
-};
-
 exports.viewSearchedItems = async (req, res, next) => {
-  const searchTerm = req.query.searchTerm;
-  const items = await Item.find({
-    approved: { $ne: false },
-    $or: [
-      { title: { $regex: searchTerm, $options: "i" } },
-      { category: { $regex: searchTerm, $options: "i" } },
-    ],
-  });
+  const searchTerm = req.query.searchTerm || "";
+
+  const features = new ApiFeatures(
+    Item.find({
+      approved: { $ne: false },
+      $or: [
+        { title: { $regex: searchTerm, $options: "i" } },
+        { category: { $regex: searchTerm, $options: "i" } },
+      ],
+    }),
+    req.query
+  )
+    .filter()
+    .paginate()
+    .sort()
+    .limitFields();
+
+  // Execute Query
+  const items = await features.query;
+
+  let heading = "";
+  if (searchTerm === "") {
+    heading = req.query.category || "All Classifieds";
+  } else {
+    heading = searchTerm;
+  }
 
   // calc noOfItems & send it to the client for pagination
   // const noOfItems = await Item.countDocuments({
@@ -76,6 +77,6 @@ exports.viewSearchedItems = async (req, res, next) => {
 
   res.status(200).render("items", {
     items: items,
-    heading: searchTerm,
+    heading: heading,
   });
 };
