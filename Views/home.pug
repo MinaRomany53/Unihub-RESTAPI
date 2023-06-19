@@ -27,107 +27,127 @@ block content
         .block
           .block__content
             h3 Books
-            a.view__more-btn(href='items.html')
+            a.view__more-btn(href='http://localhost:5000/Books')
               | View more 
               i.fa-solid.fa-angles-right.icon
           .cards.block__cards
+           each item in Books
             .card
               a.body(href='item.html')
-                img.img(src='./imgs/default.jpg' alt='item-img')
+                img.img(src='./imgs/default.jpg' alt=`${item.title}`)
                 .box-1-4
                   .location
                     i.fa-solid.fa-location-dot.icon
-                    |  Cairo
-                  .price EGP 1,500
-                  .createAt 5 days ago
+                    |  #{item.city}
+                  .price EGP #{item.price.toLocaleString("en-EG")}
+                    - const diffDays = Math.floor(Math.abs(new Date() - item.createAt) / (1000 * 60 * 60 * 24));
+                    - let createAt = `${diffDays} days ago`
+                    - if(diffDays == 0) createAt= `Today`
+                  .createAt= createAt
                 .box-2-4
-                  h3.title Mathamatics For Beginners
+                  h3.title #{item.title}
                   p.desc
-                    | Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                a.btn.details-btn(href='#') More Details
+                    | #{item.description.substring(0,120)}...
+                a.btn.details-btn(href='#') More Details          
         .block
           .block__content
-            h3 Tools
-            a.view__more-btn(href='top-cheapest.html')
+            h3 Electronics
+            a.view__more-btn(href='http://localhost:5000/Electronics')
               | View more 
               i.fa-solid.fa-angles-right.icon
           .cards.block__cards
+           each item in Electronics
             .card
-              a.body(href='#')
-                img.img(src='./imgs/default.jpg' alt='item-img')
+              a.body(href='item.html')
+                img.img(src='./imgs/default.jpg' alt=`${item.title}`)
                 .box-1-4
                   .location
                     i.fa-solid.fa-location-dot.icon
-                    |  Cairo
-                  .price EGP 1,500
-                  .createAt 5 days ago
+                    |  #{item.city}
+                  .price EGP #{item.price.toLocaleString("en-EG")}
+                    - const diffDays = Math.floor(Math.abs(new Date() - item.createAt) / (1000 * 60 * 60 * 24));
+                    - let createAt = `${diffDays} days ago`
+                    - if(diffDays == 0) createAt= `Today`
+                  .createAt= createAt
                 .box-2-4
-                  h3.title Mathamatics For Beginners
+                  h3.title #{item.title}
                   p.desc
-                    | Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    | #{item.description.substring(0,120)}...
                 a.btn.details-btn(href='#') More Details
         .block
           .block__content
             h3 Services
-            a.view__more-btn(href='#')
+            a.view__more-btn(href='http://localhost:5000/Services')
               | View more 
               i.fa-solid.fa-angles-right.icon
           .cards.block__cards
+           each item in Services
             .card
-              a.body(href='#')
-                img.img(src='./imgs/default.jpg' alt='item-img')
+              a.body(href='item.html')
+                img.img(src='./imgs/default.jpg' alt=`${item.title}`)
                 .box-1-4
                   .location
                     i.fa-solid.fa-location-dot.icon
-                    |  Cairo
-                  .price EGP 1,500
-                  .createAt 5 days ago
+                    |  #{item.city}
+                  .price EGP #{item.price.toLocaleString("en-EG")}
+                    - const diffDays = Math.floor(Math.abs(new Date() - item.createAt) / (1000 * 60 * 60 * 24));
+                    - let createAt = `${diffDays} days ago`
+                    - if(diffDays == 0) createAt= `Today`
+                  .createAt= createAt
                 .box-2-4
-                  h3.title Mathamatics For Beginners
+                  h3.title #{item.title}
                   p.desc
-                    | Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    | #{item.description.substring(0,120)}...
                 a.btn.details-btn(href='#') More Details
         .block
           .block__content
             h3 Accessories
-            a.view__more-btn(href='#')
+            a.view__more-btn(href='http://localhost:5000/Accessories')
               | View more 
               i.fa-solid.fa-angles-right.icon
           .cards.block__cards
+           each item in Accessories
             .card
-              a.body(href='#')
-                img.img(src='./imgs/default.jpg' alt='item-img')
+              a.body(href='item.html')
+                img.img(src='./imgs/default.jpg' alt=`${item.title}`)
                 .box-1-4
                   .location
                     i.fa-solid.fa-location-dot.icon
-                    |  Cairo
-                  .price EGP 1,500
-                  .createAt 5 days ago
+                    |  #{item.city}
+                  .price EGP #{item.price.toLocaleString("en-EG")}
+                    - const diffDays = Math.floor(Math.abs(new Date() - item.createAt) / (1000 * 60 * 60 * 24));
+                    - let createAt = `${diffDays} days ago`
+                    - if(diffDays == 0) createAt= `Today`
+                  .createAt= createAt
                 .box-2-4
-                  h3.title Mathamatics For Beginners
+                  h3.title #{item.title}
                   p.desc
-                    | Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    | #{item.description.substring(0,120)}...
                 a.btn.details-btn(href='#') More Details
         .block
           .block__content
-            h3 Electronics 
-            a.view__more-btn(href='items.html')
+            h3 Other 
+            a.view__more-btn(href='http://localhost:5000/Other')
               | View more 
               i.fa-solid.fa-angles-right.icon
           .cards.block__cards
+           each item in Other
             .card
               a.body(href='item.html')
-                img.img(src='./imgs/Items-imgs/image-1.jpg' alt='item-img')
+                img.img(src='./imgs/default.jpg' alt=`${item.title}`)
                 .box-1-4
                   .location
                     i.fa-solid.fa-location-dot.icon
-                    |  Cairo
-                  .price EGP 18,000
-                  .createAt 5 days ago
+                    |  #{item.city}
+                  .price EGP #{item.price.toLocaleString("en-EG")}
+                    - const diffDays = Math.floor(Math.abs(new Date() - item.createAt) / (1000 * 60 * 60 * 24));
+                    - let createAt = `${diffDays} days ago`
+                    - if(diffDays == 0) createAt= `Today`
+                  .createAt= createAt
                 .box-2-4
-                  h3.title Dell G3 Labtop
+                  h3.title #{item.title}
                   p.desc
-                    | Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    | #{item.description.substring(0,120)}...
                 a.btn.details-btn(href='#') More Details
   // End items Example Section
   
@@ -142,29 +162,28 @@ block content
           .box_img
             img(src='./imgs/features-1.svg' alt='svg')
           .box_content
-            h3 Nothing-1
+            h3 Easy buying and selling
             p
-              | Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam deleniti aliquam cumque, ipsum culpa tempore!
+              | UniHub makes it easy for college students to buy and sell textbooks, tools, and other items related to their studies. Users can browse listings and make offers all within the app.
         .box
           .box_img
             img(src='./imgs/features-2.svg' alt='svg')
           .box_content
-            h3 Nothing-2
+            h3 Customizable profiles
             p
-              | Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam deleniti aliquam cumque, ipsum culpa tempore!
+              | Users can create customizable profiles on UniHub, which can include information about their studies, interests, and items they are looking to buy or sell. This can help users find and connect with others who share similar interests and needs.
         .box
           .box_img
             img(src='./imgs/features-3.svg' alt='svg')
           .box_content
-            h3 Nothing-3
+            h3 Mobile-friendly
             p
-              | Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam deleniti aliquam cumque, ipsum culpa tempore!
+              | UniHub is designed to be mobile-friendly, which means that users can access the platform from their smartphones and tablets. This can make it easier for them to stay up-to-date with all classifieds.
         .box
           .box_img
             img(src='./imgs/features-4.svg' alt='svg')
           .box_content
-            h3 Nothing-4
+            h3 Search and filter
             p
-              | Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam deleniti aliquam cumque, ipsum culpa tempore!
+              | UniHub includes a search and filter feature that allows users to quickly find the items they are looking for. Users can search by keyword, filter by category or price range, and sort by date posted. This can help users save time and find exactly what they need.
   // End features Section
-

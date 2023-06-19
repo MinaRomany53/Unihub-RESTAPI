@@ -16,6 +16,16 @@
   align-items: center;
 }
 
+.page__heading {
+  padding: 2rem 0;
+  text-align: center;
+  font-size: 1.6rem;
+}
+.page__heading span {
+  color: var(--color-btns);
+  font-size: 3rem;
+}
+
 /* Start Pagination Btns*/
 .pagination {
   padding-bottom: 8rem;
@@ -41,3 +51,37 @@
   border-radius: 0.5rem;
 }
 /* End Pagination Btns */
+
+/* Start Error Message */
+.error__block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 4rem 0;
+  margin-bottom: 10rem;
+}
+.error__block .error__message {
+  padding: 4rem;
+  text-align: center;
+}
+.error__block .error__message span {
+  color: var(--color-btns);
+  font-size: 3rem;
+}
+
+.error__block .error__heading {
+  padding: 1rem 0;
+  font-size: 2.5rem;
+}
+
+.error__block .error__desc {
+  padding: 1rem 0;
+  font-size: 1.8rem;
+}
+
+.error__block .error__icon {
+  font-size: 10rem;
+  color: var(--color-btns);
+}
+/* End Error Message */

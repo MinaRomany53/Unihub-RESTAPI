@@ -100,6 +100,11 @@ section {
   color: var(--color-btns);
   margin-right: 0.5rem;
 }
+@media (min-width: 786px) {
+  .card .box-2-4 {
+    height: 17rem;
+  }
+}
 .card .box-2-4 .title {
   padding-bottom: 1rem;
   font-size: 1.8rem;

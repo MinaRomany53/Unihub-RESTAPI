@@ -1,0 +1,56 @@
+extends base
+
+block content
+    // Start Items Section
+    section.items
+        .container
+            if items.length === 0
+                .error__block
+                    i.fa-solid.fa-triangle-exclamation.error__icon  
+                    .error__message 
+                        h2.error__heading Oops... we didn't find anything that matches 
+                            span "#{heading}"
+                        p.error__desc Try to search for something more general, change the filters or check for spelling mistakes 
+
+            else
+                .filter__block
+                    h2 Filtering - Block
+                .page__heading 
+                    h2 Results For  
+                        span "#{heading}"
+                .cards__block
+                    .cards
+                        each item in items
+                            .card
+                                a.body(href='item.html')
+                                    img.img(src='./imgs/default.jpg' alt=`${item.title}`)
+                                    .box-1-4
+                                        .location
+                                            i.fa-solid.fa-location-dot.icon
+                                            |  #{item.city}
+                                        .price EGP #{item.price.toLocaleString("en-EG")}
+                                            - const diffDays = Math.floor(Math.abs(new Date() - item.createAt) / (1000 * 60 * 60 * 24));
+                                            - let createAt = `${diffDays} days ago`
+                                            - if(diffDays == 0) createAt= `Today`
+                                        .createAt= createAt
+                                    .box-2-4
+                                        h3.title #{item.title}
+                                        p.desc
+                                            | #{item.description.substring(0,120)}...
+                                    a.btn.details-btn(href='#') More Details    
+
+
+
+    // End Items Section
+    // Start Pagination Btns
+    .pagination
+        a(href='#') &laquo;
+        a(href='#') 1
+        a.active(href='#') 2
+        a(href='#') 3
+        a(href='#') 4
+        a(href='#') 5
+        a(href='#') 6
+        a(href='#') &raquo;
+    // End Pagination Btns
+

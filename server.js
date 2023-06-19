@@ -34,7 +34,5 @@ global.io.listen(server);
 global.io.on("connection", WebSockets.connection);
 /** Event listener for HTTP server "listening" event. */
 server.on("listening", () => {
-  console.log(
-    `Listening on port:: http://localhost:${process.env.PORT}/api/v1/items`
-  );
+  console.log(`Listening on port:: http://localhost:${process.env.PORT}/`);
 });
