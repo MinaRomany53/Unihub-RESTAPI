@@ -6,7 +6,7 @@ searchBtn.addEventListener("click", (e) => {
   e.preventDefault();
   if (!searchInput.value) return;
   const searchTerm = searchInput.value.replace(/  +/g, " ");
-  window.location.href = `http://localhost:5000/search?searchTerm=${searchTerm}`;
+  window.location.href = `/search?searchTerm=${searchTerm}`;
 });
 
 searchBox.addEventListener("keypress", (e) => {
@@ -14,6 +14,6 @@ searchBox.addEventListener("keypress", (e) => {
     e.preventDefault();
     if (!searchInput.value) return;
     const searchTerm = searchInput.value.replace(/  +/g, " ");
-    window.location.href = `http://localhost:5000/search?searchTerm=${searchTerm}`;
+    window.location.href = `/search?searchTerm=${searchTerm}`;
   }
 });

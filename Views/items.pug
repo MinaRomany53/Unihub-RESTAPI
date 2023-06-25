@@ -12,6 +12,7 @@ block content
                             span "#{heading}"
                         p.error__desc Try to search for something more general, change the filters or check for spelling mistakes 
 
+
             else
                 .filter__block
                     h2 Filtering - Block
@@ -38,19 +39,14 @@ block content
                                         p.desc
                                             | #{item.description.substring(0,120)}...
                                     a.btn.details-btn(href='#') More Details    
-
-
-
     // End Items Section
+
     // Start Pagination Btns
     .pagination
-        a(href='#') &laquo;
-        a(href='#') 1
-        a.active(href='#') 2
-        a(href='#') 3
-        a(href='#') 4
-        a(href='#') 5
-        a(href='#') 6
-        a(href='#') &raquo;
+        for page in Array(totalPages).fill().map((_, i) => i + 1)
+            if page === currentPage
+                a.active(href=`?${urlParams}&page=${page}`)= page
+            else
+                a(href=`?${urlParams}&page=${page}`)= page
     // End Pagination Btns
 
