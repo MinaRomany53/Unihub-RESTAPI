@@ -42,12 +42,22 @@ router
 router
   .route("/")
   .get(itemsController.getAllItems)
-  .post(authController.protect, itemsController.addNewItem);
+  .post(
+    authController.protect,
+    itemsController.uploadItemImages,
+    itemsController.resizeItemImages,
+    itemsController.addNewItem
+  );
 
 router
   .route("/:itemId")
   .get(itemsController.getItem)
-  .patch(authController.protect, itemsController.updateItem)
+  .patch(
+    authController.protect,
+    itemsController.uploadItemImages,
+    itemsController.resizeItemImages,
+    itemsController.updateItem
+  )
   .delete(authController.protect, itemsController.deleteItem);
 
 module.exports = router;

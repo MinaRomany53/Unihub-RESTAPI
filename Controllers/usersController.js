@@ -6,6 +6,8 @@ const sharp = require("sharp");
 
 // Start Multer Config midddlware
 
+const multerStorage = multer.memoryStorage(); // save image as buffer in the memory until we resize it
+
 const multerFilter = (req, file, cb) => {
   // Check if the file is an image
   if (file.mimetype.startsWith("image")) {
@@ -15,15 +17,15 @@ const multerFilter = (req, file, cb) => {
   }
 };
 
-const multerStorage = multer.memoryStorage(); // save image as buffer in the memory until we resize it
-
 const upload = multer({
   storage: multerStorage,
   fileFilter: multerFilter,
 });
 
 exports.uploadPhoto = upload.single("photo");
+// End Multer Config midddlware
 
+// Start Sharp Config midddlware for resize image
 exports.resizeUserPhoto = async (req, res, next) => {
   if (!req.file) return next();
   req.file.filename = `user-${req.currentUser.id}-${Date.now()}.jpeg`;
@@ -35,8 +37,7 @@ exports.resizeUserPhoto = async (req, res, next) => {
 
   next();
 };
-
-// End Multer Config midddlware
+// End Sharp Config midddlware for resize image
 
 const filterBody = (obj, allowedInfo) => {
   const newObj = {};

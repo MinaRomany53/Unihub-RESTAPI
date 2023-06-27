@@ -16,8 +16,14 @@ const itemSchema = new mongoose.Schema({
     required: [true, "must have a description"],
     trim: true,
   },
-  coverImg: { type: String, required: [true, "must have an Image"] },
-  imgs: { type: [String] },
+  coverImg: {
+    type: String,
+    default: "default.jpg",
+  },
+  imgs: {
+    type: [String],
+    default: ["default.jpg", "default.jpg"],
+  },
   category: {
     type: String,
     required: [true, "You must choose one category"],

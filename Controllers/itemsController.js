@@ -2,6 +2,66 @@ const Item = require("../Models/itemModel");
 const User = require("../Models/userModel");
 const ApiFeatures = require("../Utils/apiFeatures");
 const ApiErrors = require("../Utils/apiErrors");
+const multer = require("multer");
+const sharp = require("sharp");
+
+// Start Multer Config midddlware
+
+const multerStorage = multer.memoryStorage(); // save image as buffer in the memory until we resize it
+
+const multerFilter = (req, file, cb) => {
+  // Check if the file is an image
+  if (file.mimetype.startsWith("image")) {
+    cb(null, true);
+  } else {
+    cb(new ApiErrors(400, "Not an image! Please upload only images."), false);
+  }
+};
+
+const upload = multer({
+  storage: multerStorage,
+  fileFilter: multerFilter,
+});
+
+exports.uploadItemImages = upload.fields([
+  { name: "coverImg", maxCount: 1 },
+  { name: "imgs", maxCount: 5 },
+]);
+// End Multer Config midddlware
+
+// Start Sharp Config midddlware for resize image
+exports.resizeItemImages = async (req, res, next) => {
+  if (!req.files.coverImg || !req.files.imgs) return next();
+
+  // 1) Cover Image
+  req.body.coverImg = `item-${req.currentUser.id}-${Date.now()}-cover.jpeg`;
+
+  await sharp(req.files.coverImg[0].buffer)
+    .resize(2000, 1333)
+    .toFormat("jpeg")
+    .jpeg({ quality: 90 })
+    .toFile(`public/imgs/items/${req.body.coverImg}`);
+
+  // 2) Images
+  req.body.imgs = [];
+
+  await Promise.all(
+    req.files.imgs.map(async (file, i) => {
+      const filename = `item-${req.currentUser.id}-${Date.now()}-${i + 1}.jpeg`;
+
+      await sharp(file.buffer)
+        .resize(2000, 1333)
+        .toFormat("jpeg")
+        .jpeg({ quality: 90 })
+        .toFile(`public/imgs/items/${filename}`);
+
+      req.body.imgs.push(filename);
+    })
+  );
+
+  next();
+};
+// End Sharp Config midddlware for resize image
 
 exports.getCategoryStats = async (req, res, next) => {
   try {
