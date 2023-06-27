@@ -73,7 +73,7 @@ const userSchema = new mongoose.Schema({
     default: true,
     select: false,
   },
-  photo: { type: String },
+  photo: { type: String, default: "default.png" },
   joinAt: { type: Date, default: Date.now },
   passwordChangeAt: { type: Date },
 

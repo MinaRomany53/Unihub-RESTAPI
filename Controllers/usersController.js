@@ -1,6 +1,42 @@
 const User = require("../Models/userModel");
 const ApiFeatures = require("../Utils/apiFeatures");
 const ApiErrors = require("../Utils/apiErrors");
+const multer = require("multer");
+const sharp = require("sharp");
+
+// Start Multer Config midddlware
+
+const multerFilter = (req, file, cb) => {
+  // Check if the file is an image
+  if (file.mimetype.startsWith("image")) {
+    cb(null, true);
+  } else {
+    cb(new ApiErrors(400, "Not an image! Please upload only images."), false);
+  }
+};
+
+const multerStorage = multer.memoryStorage(); // save image as buffer in the memory until we resize it
+
+const upload = multer({
+  storage: multerStorage,
+  fileFilter: multerFilter,
+});
+
+exports.uploadPhoto = upload.single("photo");
+
+exports.resizeUserPhoto = async (req, res, next) => {
+  if (!req.file) return next();
+  req.file.filename = `user-${req.currentUser.id}-${Date.now()}.jpeg`;
+  await sharp(req.file.buffer)
+    .resize(500, 500)
+    .toFormat("jpeg")
+    .jpeg({ quality: 90 })
+    .toFile(`public/imgs/users/${req.file.filename}`);
+
+  next();
+};
+
+// End Multer Config midddlware
 
 const filterBody = (obj, allowedInfo) => {
   const newObj = {};
@@ -36,7 +72,8 @@ exports.updateMe = async (req, res, next) => {
       );
 
     // Restrict Updated Fields -not update everything user send
-    const bodyObj = filterBody(req.body, ["name", "email", "photo", "phone"]);
+    const bodyObj = filterBody(req.body, ["name", "email", "phone"]);
+    if (req.file) bodyObj.photo = req.file.filename;
 
     //Update User Info
     const updatedUser = await User.findByIdAndUpdate(
