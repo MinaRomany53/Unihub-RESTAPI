@@ -15,7 +15,64 @@ block content
 
             else
                 .filter__block
-                    h2 Filtering - Block
+                    .filter__col
+                        h2 Sort By
+                        .filter__labels
+                            label
+                                input(type='radio' name='sort' value='-createAt')
+                                |                   Newly listed
+                            label
+                                input(type='radio' name='sort' value='price')
+                                |                   Lowest price
+                            label
+                                input(type='radio' name='sort' value='-price')
+                                |                   Highest price
+                    .filter__col
+                        h2 Condition
+                        .filter__labels
+                            label
+                                input(type='radio' name='condition' value='Used')
+                                |                   Used
+                            label
+                                input(type='radio' name='condition' value='New')
+                                |                   New
+                    .filter__col
+                        h2(style=' text-align: center') Locations
+                        .filter__labels
+                            select#city
+                                option(value='') Select a city
+                                option(value='Cairo') Cairo
+                                option(value='Alexandria') Alexandria
+                                option(value='Giza') Giza
+                                option(value='PortSaid') Port Said
+                                option(value='Suez') Suez
+                                option(value='Luxor') Luxor
+                                option(value='Mansoura') Mansoura
+                                option(value='Tanta') Tanta
+                                option(value='Asyut') Asyut
+                                option(value='Ismailia') Ismailia
+                                option(value='Fayyum') Fayyum
+                                option(value='Zagazig') Zagazig
+                                option(value='Damietta') Damietta
+                                option(value='Aswan') Aswan
+                                option(value='Minya') Minya
+                                option(value='Damanhur') Damanhur
+                                option(value='BeniSuef') Beni Suef
+                                option(value='Hurghada') Hurghada
+                                option(value='Qena') Qena
+                                option(value='Sohag') Sohag
+                    .filter__col
+                        h2(style=' text-align: center') Categories
+                        .filter__labels
+                            select#category
+                                option(value='') Select a category
+                                option(value='Books') Books
+                                option(value='Services') Services
+                                option(value='Electronics') Electronics
+                                option(value='Accessories') Accessories
+                                option(value='Other') Other
+
+
                 .page__heading 
                     h2 Results For  
                         span "#{heading}"
@@ -50,3 +107,5 @@ block content
                 a(href=`?${urlParams}&page=${page}`)= page
     // End Pagination Btns
 
+    // Script File
+    script(type='text/javascript' , src='/js/filtration.js')
