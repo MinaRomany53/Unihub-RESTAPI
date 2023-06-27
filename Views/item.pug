@@ -1,0 +1,119 @@
+extends base
+
+block content
+    main.item__info
+      .container
+        .col--1
+          // Start Item Imgs Section
+          section.item-imgs
+            .slider-full
+              each image in item.imgs
+                .slide-full
+                    img(src=`/imgs/items/${image}` alt='item-image')
+              button.slider-full__btn.slider-full__btn--left
+                i.fa-solid.fa-angle-left
+              button.slider-full__btn.slider-full__btn--right
+                i.fa-solid.fa-angle-right
+          // End Item Imgs Section
+          // Start Item Heading Section
+          .item-heading
+            .row--1
+              span.item-heading__price
+                span.currency EGP
+                | #{item.price.toLocaleString("en-EG")}
+              .item-heading__btns
+                button.share__btn
+                  i.fa-solid.fa-share
+                button.heart__btn
+                  i.fa-solid.fa-heart
+            .row--2
+              p.item-heading__title=item.title
+            .row--3
+              .location
+                span
+                  i.fa-solid.fa-location-dot.icon
+                  | #{item.location.address}
+              .date
+                - const diffDays = Math.floor(Math.abs(new Date() - item.createAt) / (1000 * 60 * 60 * 24));
+                - let createAt = `${diffDays} days ago`
+                - if(diffDays == 0) createAt= `Today`
+                span=createAt
+          // End Item Heading Section
+          // Start Item Description Section
+          .item-description
+            h3.title Description
+            p.text
+               | #{item.description}
+          // End Item Description Section
+          // Start Item Location Section
+          .item-location
+            h3.title Location
+            .location
+              span
+                i.fa-solid.fa-location-dot.icon
+                | #{item.location.address}
+            .map
+              | Map goes here
+          // End Item Location Section
+          // Start Related ads Section
+          .item-related-ads
+            .block
+              .block__content
+                h3 Related ads
+              .cards.block__cards
+                    each relatedItem in relatedItems
+                        .card
+                            a.body(href=`/item/${relatedItem._id}`)
+                                img.img(src=`/imgs/items/${relatedItem.coverImg}` alt=`${relatedItem.title}`)
+                                .box-1-4
+                                    .location
+                                        i.fa-solid.fa-location-dot.icon
+                                        |  #{relatedItem.city}
+                                    .price EGP #{relatedItem.price.toLocaleString("en-EG")}
+                                        - const diffDays = Math.floor(Math.abs(new Date() - relatedItem.createAt) / (1000 * 60 * 60 * 24));
+                                        - let createAt = `${diffDays} days ago`
+                                        - if(diffDays == 0) createAt= `Today`
+                                    .createAt= createAt
+                                .box-2-4
+                                    h3.title #{relatedItem.title}
+                                    p.desc
+                                        | #{relatedItem.description.substring(0,120)}...
+                                a.btn.details-btn(href=`/item/${relatedItem._id}`) More Details   
+          // End Related ads Section
+        .col--2
+          .seller__info
+            a.row--1(href='profile.html')
+              img.seller__info__img(src=`/imgs/users/${item.user.photo}` alt='seller-img')
+              .seller__info__info
+                h3.name= item.user.name
+                p.joinat
+                  | Member since 
+                  span=item.user.joinAt.toLocaleString("en-EG", { month: "long" }) + " " + item.user.joinAt.getFullYear()
+            .row--2
+              a.btn.phone-btn(href='#')
+                i.fa-solid.fa-phone.icon
+                |                     Show phone number
+              a.btn.phone-btn.hidden(href='#')
+                i.fa-solid.fa-phone.icon
+                |                     01270806680
+              a.btn.chat-btn(href='#')
+                i.fa-regular.fa-comments.icon
+                | Chat
+          .rules
+            h3 Your safety matters to us!
+            ul.rules__list
+              li
+                i.fa-solid.fa-check.icon
+                span Only meet in public / crowded places for example metro stations and malls.
+              li
+                i.fa-solid.fa-check.icon
+                span Never go alone to meet a buyer / seller, always take someone with you.
+              li
+                i.fa-solid.fa-check.icon
+                span Check and inspect the product properly before purchasing it.
+              li
+                i.fa-solid.fa-check.icon
+                span Never pay anything in advance or transfer money before inspecting the product.
+
+    // Script File
+    script(type='text/javascript' , src='/js/slider.js')

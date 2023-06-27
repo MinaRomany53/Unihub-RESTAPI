@@ -33,7 +33,7 @@ block content
           .cards.block__cards
            each item in Books
             .card
-              a.body(href='item.html')
+              a.body(href=`/item/${item._id}`)
                 img.img(src=`./imgs/items/${item.coverImg}` alt=`${item.title}`)
                 .box-1-4
                   .location
@@ -48,7 +48,7 @@ block content
                   h3.title #{item.title}
                   p.desc
                     | #{item.description.substring(0,120)}...
-                a.btn.details-btn(href='#') More Details          
+                a.btn.details-btn(href=`/item/${item._id}`) More Details          
         .block
           .block__content
             h3 Electronics
@@ -58,7 +58,7 @@ block content
           .cards.block__cards
            each item in Electronics
             .card
-              a.body(href='item.html')
+              a.body(href=`/item/${item._id}`)
                 img.img(src=`./imgs/items/${item.coverImg}` alt=`${item.title}`)
                 .box-1-4
                   .location
@@ -73,7 +73,7 @@ block content
                   h3.title #{item.title}
                   p.desc
                     | #{item.description.substring(0,120)}...
-                a.btn.details-btn(href='#') More Details
+                a.btn.details-btn(href=`/item/${item._id}`) More Details
         .block
           .block__content
             h3 Services
@@ -83,7 +83,7 @@ block content
           .cards.block__cards
            each item in Services
             .card
-              a.body(href='item.html')
+              a.body(href=`/item/${item._id}`)
                 img.img(src=`./imgs/items/${item.coverImg}` alt=`${item.title}`)
                 .box-1-4
                   .location
@@ -98,7 +98,7 @@ block content
                   h3.title #{item.title}
                   p.desc
                     | #{item.description.substring(0,120)}...
-                a.btn.details-btn(href='#') More Details
+                a.btn.details-btn(href=`/item/${item._id}`) More Details
         .block
           .block__content
             h3 Accessories
@@ -108,7 +108,7 @@ block content
           .cards.block__cards
            each item in Accessories
             .card
-              a.body(href='item.html')
+              a.body(href=`/item/${item._id}`)
                 img.img(src=`./imgs/items/${item.coverImg}` alt=`${item.title}`)
                 .box-1-4
                   .location
@@ -133,7 +133,7 @@ block content
           .cards.block__cards
            each item in Other
             .card
-              a.body(href='item.html')
+              a.body(href=`/item/${item._id}`)
                 img.img(src=`./imgs/items/${item.coverImg}` alt=`${item.title}`)
                 .box-1-4
                   .location
@@ -148,7 +148,7 @@ block content
                   h3.title #{item.title}
                   p.desc
                     | #{item.description.substring(0,120)}...
-                a.btn.details-btn(href='#') More Details
+                a.btn.details-btn(href=`/item/${item._id}`) More Details
   // End items Example Section
   
   // Start features Section

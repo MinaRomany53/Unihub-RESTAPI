@@ -80,7 +80,7 @@ block content
                     .cards
                         each item in items
                             .card
-                                a.body(href='item.html')
+                                a.body(href=`/item/${item._id}`)
                                     img.img(src=`./imgs/items/${item.coverImg}` alt=`${item.title}`)
                                     .box-1-4
                                         .location
@@ -95,7 +95,7 @@ block content
                                         h3.title #{item.title}
                                         p.desc
                                             | #{item.description.substring(0,120)}...
-                                    a.btn.details-btn(href='#') More Details    
+                                    a.btn.details-btn(href=`/item/${item._id}`) More Details    
     // End Items Section
 
     // Start Pagination Btns

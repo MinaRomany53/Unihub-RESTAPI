@@ -108,3 +108,19 @@ exports.viewSearchedItems = async (req, res, next) => {
     urlParams: urlParams,
   });
 };
+
+exports.getItemPage = async (req, res, next) => {
+  const item = await Item.findById(req.params.itemId);
+  const relatedItems = await Item.find({
+    category: item.category,
+    _id: { $ne: item._id },
+    approved: { $ne: false },
+  }).limit(3);
+
+  // if (!item) return next(new ApiErrors(404, `Invalid ID !`));
+
+  res.status(200).render("item", {
+    item: item,
+    relatedItems: relatedItems,
+  });
+};
