@@ -349,7 +349,7 @@ exports.getAllFavItems = async (req, res, next) => {
   try {
     const user = await User.findById(req.currentUser.id).populate({
       path: "favItems",
-      select: "_id title price description category city -user",
+      select: "_id title price description category city -user coverImg imgs",
     });
     res.status(200).json({
       status: "success",
