@@ -88,7 +88,7 @@
 }
 @media (max-width: 786px) {
   .slider-full__btn {
-    display: none;
+    font-size: 3rem;
   }
 }
 /* End Item Imgs Section */
@@ -212,15 +212,9 @@
 }
 .item-location .map {
   width: 100%;
-  height: 30rem;
+  height: 40rem;
   border-radius: 0.7rem;
-  background-color: black;
   margin-bottom: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #ffff;
-  font-size: 2rem;
 }
 /* End Item Location Section */
 

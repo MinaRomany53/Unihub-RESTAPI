@@ -235,3 +235,11 @@ section {
   color: #999;
 }
 /* End Landing-Form */
+
+.marker {
+  background-image: url("../imgs/location-dot-solid.svg");
+  background-size: cover;
+  width: 26px;
+  height: 35px;
+  cursor: pointer;
+}

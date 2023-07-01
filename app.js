@@ -37,7 +37,7 @@ app.use(cors());
 app.options("*", cors());
 
 // Third Party Middleware - Set a Couple of security HTTP Headers to secure this APP
-app.use(helmet());
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 
 // Third Party Middleware - Limiting Requests for each IP
 const limiter = rateLimit({

@@ -7,9 +7,9 @@ block content
           // Start Item Imgs Section
           section.item-imgs
             .slider-full
-              each image in item.imgs
+              each image , i in item.imgs
                 .slide-full
-                    img(src=`/imgs/items/${image}` alt='item-image')
+                    img(src=`/imgs/items/${image}` alt=`${item.title}-image-${i+1}`)
               button.slider-full__btn.slider-full__btn--left
                 i.fa-solid.fa-angle-left
               button.slider-full__btn.slider-full__btn--right
@@ -52,8 +52,7 @@ block content
               span
                 i.fa-solid.fa-location-dot.icon
                 | #{item.location.address}
-            .map
-              | Map goes here
+            .map#map(data-location=`${JSON.stringify(item.location)}`)
           // End Item Location Section
           // Start Related ads Section
           .item-related-ads
@@ -117,3 +116,4 @@ block content
 
     // Script File
     script(type='text/javascript' , src='/js/slider.js')
+    script(type='text/javascript' , src='/js/mapbox.js')
