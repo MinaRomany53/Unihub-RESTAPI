@@ -1,0 +1,28 @@
+extends base
+
+block content
+    main.form--main
+        .container
+            .form-box
+                .image
+                    img(src='/imgs/sign-up.svg' alt='login-svg')
+                form.form(action='' method='POST')
+                    .field
+                        label(for='fullname') Full Name:
+                        input#fullname.input.input--text(type='text' name='fullname' placeholder='e.g. Mina Romany')
+                    .field
+                        label(for='email') Email Address
+                        input#email(type='email' name='email' placeholder='e.g. user@domain.com')
+                    .field
+                        label(for='password') Password
+                        input#password(type='password' placeholder='••••••••' name='password')
+                    .field
+                        label(for='confirmpassword') Confirm Password
+                        input#confirmpassword(type='password' placeholder='••••••••' name='confirmpassword')
+                        input.btn.submit_btn(type='submit' value='SIGN IN')
+                .form-footer
+                    p Already have an Account?
+                    a(href='/login') Log In
+  
+    // Script File
+

@@ -28,7 +28,14 @@ const itemSchema = new mongoose.Schema({
     type: String,
     required: [true, "You must choose one category"],
     enum: {
-      values: ["Electronics", "Books", "Services", "Accessories", "Other"],
+      values: [
+        "Electronics",
+        "Books",
+        "Services",
+        "Accessories",
+        "Tools",
+        "Other",
+      ],
       message:
         "{VALUE} is not supported, You must choose category field from: Electronics - Books - Services - Accessories - Other",
     },

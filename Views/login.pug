@@ -1,0 +1,24 @@
+extends base
+
+block content
+    main.form--main
+        .container
+            .form-box
+                .image
+                    img(src='/imgs/log-in.svg' alt='login-svg')
+                form.form(action='' method='POST')
+                    .field
+                        label(for='username') Email
+                        input#email(type='email' name='email' placeholder='your email...')
+                    .field
+                        label(for='password') Password
+                        input#password(type='password' placeholder='••••••••' name='password')
+                    .forget_password
+                        a(href='forgetpassword.html') Forget Password?
+                        input.btn.submit_btn(type='submit' value='Log In')
+                .form-footer
+                    p Don&rsquo;t have an Account?
+                    a(href='/signup') Sign Up
+  
+    // Script File
+

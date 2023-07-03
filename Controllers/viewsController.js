@@ -124,3 +124,11 @@ exports.getItemPage = async (req, res, next) => {
     relatedItems: relatedItems,
   });
 };
+
+exports.getLoginPage = (req, res, next) => {
+  res.status(200).render("login");
+};
+
+exports.getSignupPage = (req, res, next) => {
+  res.status(200).render("signup");
+};
