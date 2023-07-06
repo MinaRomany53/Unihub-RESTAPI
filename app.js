@@ -8,6 +8,7 @@ const hpp = require("hpp");
 const compression = require("compression");
 const cors = require("cors");
 const path = require("path");
+const cookieParser = require("cookie-parser");
 
 const dotenv = require("dotenv").config({ path: "./config.env" }); // Get all env var in this file & save it
 const ApiErrors = require("./Utils/apiErrors");
@@ -21,6 +22,7 @@ const app = express();
 
 // BuiltIn Middleware - For parsing application/json
 app.use(express.json());
+app.use(cookieParser());
 
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "Views"));
@@ -35,6 +37,7 @@ if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
 const corsOptions = {
   origin: "http://localhost:5000",
   credentials: true, //access-control-allow-credentials:true
+  origin: true,
   optionSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
@@ -65,6 +68,8 @@ app.use(compression());
 app.use((req, res, next) => {
   const date = new Date().toISOString();
   req.date = date;
+  console.log(req.cookies);
+
   next();
 });
 
