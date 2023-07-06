@@ -37,7 +37,7 @@ const itemSchema = new mongoose.Schema({
         "Other",
       ],
       message:
-        "{VALUE} is not supported, You must choose category field from: Electronics - Books - Services - Accessories - Other",
+        "{VALUE} is not supported, You must choose category field from: Electronics - Books - Services - Accessories - Tools - Other",
     },
   },
   city: { type: String, required: true, trim: true },

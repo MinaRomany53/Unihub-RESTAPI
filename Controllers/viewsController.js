@@ -37,11 +37,16 @@ exports.getHomePage = async (req, res, next) => {
     category: "Accessories",
     approved: { $ne: false },
   }).limit(4);
+  const Tools = await Item.find({
+    category: "Tools",
+    approved: { $ne: false },
+  }).limit(4);
 
   res.status(200).render("home", {
     Books: Books,
     Electronics: Electronics,
     Services: Services,
+    Tools: Tools,
     Accessories: Accessories,
     Other: Other,
   });

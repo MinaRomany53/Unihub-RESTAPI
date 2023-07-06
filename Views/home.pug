@@ -101,6 +101,31 @@ block content
                 a.btn.details-btn(href=`/item/${item._id}`) More Details
         .block
           .block__content
+            h3 Tools
+            a.view__more-btn(href='/search?category=Tools')
+              | View more 
+              i.fa-solid.fa-angles-right.icon
+          .cards.block__cards
+           each item in Tools
+            .card
+              a.body(href=`/item/${item._id}`)
+                img.img(src=`./imgs/items/${item.coverImg}` alt=`${item.title}`)
+                .box-1-4
+                  .location
+                    i.fa-solid.fa-location-dot.icon
+                    |  #{item.city}
+                  .price EGP #{item.price.toLocaleString("en-EG")}
+                    - const diffDays = Math.floor(Math.abs(new Date() - item.createAt) / (1000 * 60 * 60 * 24));
+                    - let createAt = `${diffDays} days ago`
+                    - if(diffDays == 0) createAt= `Today`
+                  .createAt= createAt
+                .box-2-4
+                  h3.title #{item.title}
+                  p.desc
+                    | #{item.description.substring(0,120)}...
+                a.btn.details-btn(href=`/item/${item._id}`) More Details
+        .block
+          .block__content
             h3 Accessories
             a.view__more-btn(href='/search?category=Accessories')
               | View more 
