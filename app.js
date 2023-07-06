@@ -16,7 +16,6 @@ const usersRouter = require("./Routes/usersRoutes");
 const itemsRouter = require("./Routes/itemsRoutes");
 const chatRoomsRouter = require("./Routes/chatRoomsRoutes");
 const viewsRouter = require("./Routes/viewsRoutes");
-const { read } = require("fs");
 
 const app = express();
 
@@ -33,8 +32,13 @@ app.use(express.static(path.join(__dirname, "Public")));
 if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
 
 // Third Party Middleware - Implemetning CORS
-app.use(cors());
-app.options("*", cors());
+const corsOptions = {
+  origin: "http://localhost:5000",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
+// app.options("*", cors());
 
 // Third Party Middleware - Set a Couple of security HTTP Headers to secure this APP
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
