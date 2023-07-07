@@ -103,10 +103,13 @@ header .container .row--1 {
 /* Start Nav after login */
 /* .nav_login {
 } */
+.nav_login {
+  position: relative;
+}
 .nav_login .link-item {
   margin-left: 2rem !important;
 }
-.nav_login .account__chat {
+/* .nav_login .account__chat {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -122,19 +125,55 @@ header .container .row--1 {
 }
 .nav_login .account__chat .icon:hover {
   color: var(--color-secondary);
-}
+} */
 
 .nav_login .account__image {
   text-decoration: none;
   height: 4.5rem;
+  cursor: pointer;
 }
 .nav_login .account__image img {
   max-width: 4.5rem;
+  width: 5rem;
   height: 4.5rem;
   transition: all 0.3s;
 }
 .nav_login .account__image img:hover {
   border: 2px solid var(--color-secondary);
+}
+
+.nav_login .account__menu {
+  background-color: #fff;
+  border-radius: 0.8rem;
+  padding: 1rem 0;
+  text-align: center;
+  position: absolute;
+  top: 6rem;
+  left: -3.2rem;
+  width: 15rem;
+  transition: all 0.3s;
+  z-index: 10;
+}
+.nav_login .account__menu .account__menu_link {
+  text-decoration: none;
+  color: var(--color-primary);
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  display: block;
+  transition: all 0.3s;
+}
+.nav_login .account__menu .logout {
+  color: red;
+}
+.nav_login .account__menu .account__menu_link:not(:last-child):hover {
+  color: var(--color-secondary);
+}
+.account__menu-hidden {
+  display: none;
+}
+.account__menu-show {
+  display: block;
 }
 .nav_login .sell-btn {
   background-color: #fff;
@@ -147,7 +186,6 @@ header .container .row--1 {
   font-weight: 800;
 }
 /* End Nav after login */
-
 .nav {
   display: flex;
 }

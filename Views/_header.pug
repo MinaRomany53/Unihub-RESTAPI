@@ -13,14 +13,30 @@ header
           i.fa-solid.fa-search.search-icon
       button#mobile_btn.mobile_btn(data-state='open')
         i.fa-solid.fa-bars.icon
-  
-      // Start Nav before login
-      ul.nav.hidden
-        li.link-item
-          a.link.login-link(href='/login') Login
-        li.link-item
-          a.btn.sign-btn.link(href='/signup') Sign up
-      // End Nav before login
+
+      if user
+        // Start Nav after login
+        .nav.nav_login.hidden
+          .link-item.account__image
+            img.seller__info__img(src=`https://unihub.azurewebsites.net/imgs/users/${user.photo}` alt='Profile-img')
+          .account__menu.account__menu-hidden
+            a.account__menu_link(href='/myProfile') View Profile
+            a.account__menu_link(href='/myAds') My Ads
+            a.account__menu_link(href='#') Favourites
+            a.account__menu_link(href='#') Messages
+            a.account__menu_link(href='#') Settings
+            a.account__menu_link.logout(href='#') Logout
+          .link-item
+            a.btn.sell-btn.link(href='#') Sell
+        // End Nav after login
+      else
+        // Start Nav before login
+        ul.nav.hidden
+          li.link-item
+            a.link.login-link(href='/login') Login
+          li.link-item
+            a.btn.sign-btn.link(href='/signup') Sign up
+        // End Nav before login
     .row--2
       ul.categories
         li.cat

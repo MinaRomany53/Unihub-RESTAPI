@@ -122,6 +122,8 @@ exports.protect = async (req, res, next) => {
       req.headers.authorization.startsWith("Bearer")
     ) {
       token = req.headers.authorization.split(" ")[1];
+    } else if (req.cookies.jwt) {
+      token = req.cookies.jwt;
     }
 
     if (!token) return next(new ApiErrors(401, "Please Login First!"));
@@ -324,4 +326,32 @@ exports.updatMyPassword = async (req, res, next) => {
     err.statusCode = 401;
     next(err);
   }
+};
+
+// server side rendering
+exports.isLoggedIn = async (req, res, next) => {
+  // Check if Token exist in the cookies first
+  if (req.cookies.jwt) {
+    // Verify this Token
+    const decodeToken = await promisify(jwt.verify)(
+      req.cookies.jwt,
+      process.env.JWT_PRIVATE_KEY
+    );
+    // Check if user still exist
+    const currentUser = await User.findById(decodeToken.id);
+    if (!currentUser) return next();
+    // Check if user change password after sending this Token
+    if (currentUser.passwordChangeAt) {
+      const tokenIssuedAt = decodeToken.iat; // seconds
+      const passChangedAt = currentUser.passwordChangeAt.getTime() / 1000; // seconds
+      if (tokenIssuedAt < passChangedAt) {
+        return next();
+      }
+    }
+    // Move to next middleware there is a user LoggedIn
+    res.locals.user = currentUser; // use it to access current user data in the pug template
+
+    return next();
+  }
+  next();
 };

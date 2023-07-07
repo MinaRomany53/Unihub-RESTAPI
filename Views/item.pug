@@ -82,22 +82,27 @@ block content
         .col--2
           .seller__info
             a.row--1(href='profile.html')
-              img.seller__info__img(src=`/imgs/users/${item.user.photo}` alt='seller-img')
+              img.seller__info__img(src=`https://unihub.azurewebsites.net/imgs/users/${item.user.photo}` alt='seller-img')
               .seller__info__info
                 h3.name= item.user.name
                 p.joinat
                   | Member since 
                   span=item.user.joinAt.toLocaleString("en-EG", { month: "long" }) + " " + item.user.joinAt.getFullYear()
             .row--2
-              a.btn.phone-btn(href='/login')
-                i.fa-solid.fa-phone.icon
-                |                     Show phone number
-              a.btn.phone-btn.hidden(href='#')
-                i.fa-solid.fa-phone.icon
-                |                     01270806680
-              a.btn.chat-btn(href='#')
-                i.fa-regular.fa-comments.icon
-                | Chat
+              if user
+                div.btn.phone-btn
+                  i.fa-solid.fa-phone.icon
+                  |                     #{item.user.phone}
+                a.btn.chat-btn(href='/chat')
+                  i.fa-regular.fa-comments.icon
+                  | Chat
+              else
+                a.btn.phone-btn(href='/login')
+                  i.fa-solid.fa-phone.icon
+                  |                     Show phone number
+                a.btn.chat-btn(href='/login')
+                  i.fa-regular.fa-comments.icon
+                  | Chat
           .rules
             h3 Your safety matters to us!
             ul.rules__list

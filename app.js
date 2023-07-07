@@ -68,8 +68,6 @@ app.use(compression());
 app.use((req, res, next) => {
   const date = new Date().toISOString();
   req.date = date;
-  console.log(req.cookies);
-
   next();
 });
 
