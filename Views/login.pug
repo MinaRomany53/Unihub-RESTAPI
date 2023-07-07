@@ -3,6 +3,12 @@ extends base
 block content
     main.form--main
         .container
+            // alert modal
+            #alert_modal.modal.hidden
+                .modal-content
+                    span.close(onclick='hideAlert()') &times;
+                    p#message Login successful!
+
             .form-box
                 .image
                     img(src='/imgs/log-in.svg' alt='login-svg')
