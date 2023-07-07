@@ -330,6 +330,7 @@ exports.updatMyPassword = async (req, res, next) => {
 
 // server side rendering
 exports.isLoggedIn = async (req, res, next) => {
+  if (req.cookies.jwt === "loggedout") return next();
   // Check if Token exist in the cookies first
   if (req.cookies.jwt) {
     // Verify this Token
@@ -354,4 +355,26 @@ exports.isLoggedIn = async (req, res, next) => {
     return next();
   }
   next();
+};
+
+exports.logout = async (req, res, next) => {
+  try {
+    // Send JWT with Cookie to the Browser
+    const cookieOptions = {
+      expires: new Date(Date.now() + 10 * 1000),
+      httpOnly: true,
+    };
+    if (process.env.NODE_ENV === "Production") cookieOptions.secure = true; // https only in production
+
+    res.cookie("jwt", "loggedout", cookieOptions);
+
+    // Send Response
+    res.status(200).json({
+      status: "Success",
+      date: req.date,
+      message: "Logged Out Successfully",
+    });
+  } catch (err) {
+    next(err);
+  }
 };
