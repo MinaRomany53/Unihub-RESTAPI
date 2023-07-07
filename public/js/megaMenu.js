@@ -2,8 +2,8 @@ const logout = async () => {
   try {
     const res = await axios({
       method: "GET",
-      url: "http://localhost:5000/api/v1/users/logout",
-      //   url: "https://unihub.azurewebsites.net/api/v1/users/logout",
+      // url: "http://localhost:5000/api/v1/users/logout",
+      url: "https://unihub.azurewebsites.net/api/v1/users/logout",
       withCredentials: true,
     });
     console.log(res);
