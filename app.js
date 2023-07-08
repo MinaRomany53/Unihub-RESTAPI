@@ -89,24 +89,42 @@ app.use((err, req, res, next) => {
   err.message = err.message || "Something Wrong happen";
 
   if (process.env.NODE_ENV === "development") {
-    res.status(err.statusCode).json({
-      status: err.status,
-      message: err.message,
-      error: err,
-      stack: err.stack,
-    });
-  } else if (process.env.NODE_ENV === "production") {
-    if (err.isOperational) {
+    if (req.originalUrl.startsWith("/api")) {
       res.status(err.statusCode).json({
         status: err.status,
         message: err.message,
+        error: err,
+        stack: err.stack,
       });
     } else {
-      console.error("Error🔥❌", err);
-      res.status(500).json({
-        status: err.status,
-        message: "Something Wrong happen",
+      res.status(err.statusCode).render("error", {
+        message: err.message,
       });
+    }
+  } else if (process.env.NODE_ENV === "production") {
+    if (err.isOperational) {
+      if (req.originalUrl.startsWith("/api")) {
+        res.status(err.statusCode).json({
+          status: err.status,
+          message: err.message,
+        });
+      } else {
+        res.status(err.statusCode).render("error", {
+          message: "Please Try Again Later",
+        });
+      }
+    } else {
+      if (req.originalUrl.startsWith("/api")) {
+        console.error("Error🔥❌", err);
+        res.status(500).json({
+          status: err.status,
+          message: "Something Wrong happen",
+        });
+      } else {
+        res.status(err.statusCode).render("error", {
+          message: "Please Try Again Later",
+        });
+      }
     }
   }
 });

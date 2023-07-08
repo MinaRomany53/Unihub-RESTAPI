@@ -10,7 +10,7 @@ const login = async (email, password) => {
   try {
     const res = await axios({
       method: "POST",
-      //   url: "http://localhost:5000/api/v1/users/login",
+      // url: "http://localhost:5000/api/v1/users/login",
       url: "https://unihub.azurewebsites.net/api/v1/users/login",
       data: {
         email,
