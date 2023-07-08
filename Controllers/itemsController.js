@@ -31,6 +31,7 @@ exports.uploadItemImages = upload.fields([
 
 // Start Sharp Config midddlware for resize image
 exports.resizeItemImages = async (req, res, next) => {
+  if (!req.files) return next();
   if (!req.files.coverImg || !req.files.imgs) return next();
 
   // 1) Cover Image

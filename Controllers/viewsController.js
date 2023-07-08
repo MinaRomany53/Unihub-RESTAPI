@@ -153,14 +153,13 @@ exports.getSignupPage = (req, res, next) => {
 
 exports.getProfilePage = async (req, res, next) => {
   try {
-    const profile = await User.findById(req.params.userId);
+    const profile = await User.findById(req.params.userId).populate({
+      path: "favItems",
+      select:
+        "_id title price description category city -user coverImg imgs createAt",
+    });
 
     if (!profile) return next(new ApiErrors(404, `Sorry, This User Not Found`));
-
-    // const approvedItems = await Item.find({
-    //   user: user._id,
-    //   approved: { $ne: false },
-    // });
 
     const approvedItems = profile.items.filter(
       (item) => item.approved === true
@@ -170,12 +169,15 @@ exports.getProfilePage = async (req, res, next) => {
       (item) => item.approved === false
     );
 
+    const favItems = profile.favItems;
+
     if (req.currentUser) {
       if (req.currentUser._id.toString() === profile._id.toString()) {
         return res.status(200).render("myProfile", {
           profile: profile,
           approvedItems: approvedItems,
           notApprovedItems: notApprovedItems,
+          favItems: favItems,
         });
       }
     }

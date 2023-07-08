@@ -1,11 +1,112 @@
 extends base
 
 block content
-    div.container
-        div.row
-            div.col-md-12
-                h1.text-center My Profil
-                hr
-                div.col-md-12
-    // Script File
-    //- script(type='text/javascript' , src='/js/filtration.js')
+    main.profile
+      .container
+        .Profile-card
+          .seller__info
+            div.row--1
+              img.seller__info__img(src=`https://unihub.azurewebsites.net/imgs/users/${profile.photo}` alt='profile-img')
+              .seller__info__info
+                h3.name= profile.name
+                p.joinat
+                  | Member since 
+                  span=profile.joinAt.toLocaleString("en-EG", { month: "long" }) + " " + profile.joinAt.getFullYear()
+            .row--2
+              a.btn.editProfile-btn(href='#')
+                i.fa-solid.fa-pen-to-square.icon
+                |                       Edit your profile
+              a.btn.changePassword-btn(href='#')
+                i.fa-solid.fa-lock.icon
+                |                       Change your password
+              a.btn.deleteAccount-btn(href='#')
+                i.fa-solid.fa-square-minus.icon
+                |                       Delete your account
+        .profile-items
+          .profile-items--block
+            h3.no_of_items 
+              | Active Ads (
+              span= approvedItems.length
+              | )
+            .cards
+                each item in approvedItems
+                    .card
+                        a.body(href=`/item/${item._id}`)
+                            img.img(src=`https://unihub.azurewebsites.net/imgs/items/${item.coverImg}` alt=`${item.title}`)
+                            .box-1-4
+                                .location
+                                    i.fa-solid.fa-location-dot.icon
+                                    |  #{item.city}
+                                .price EGP #{item.price.toLocaleString("en-EG")}
+                                    - const diffDays = Math.floor(Math.abs(new Date() - item.createAt) / (1000 * 60 * 60 * 24));
+                                    - let createAt = `${diffDays} days ago`
+                                    - if(diffDays == 0) createAt= `Today`
+                                .createAt= createAt
+                            .box-2-4
+                                h3.title #{item.title}
+                                p.desc
+                                    | #{item.description.substring(0,120)}...
+                            .box-3-4
+                                a.btn.updateItem-btn(href='#')
+                                    i.fa-solid.fa-pen-to-square.icon
+                                    |                           Update
+                                a.btn.closeItem-btn(href='#')
+                                    i.fa-solid.fa-square-xmark.icon
+                                    |                           Close
+                                a.btn.deleteItem-btn(href='#')
+                                    i.fa-solid.fa-trash.icon
+                                    |                           Delete
+          .profile-items--block
+            h3.no_of_items
+              | Pending Ads (
+              span= notApprovedItems.length
+              | )
+            .cards
+                each item in notApprovedItems
+                    .card
+                        div.body
+                            img.img(src=`https://unihub.azurewebsites.net/imgs/items/${item.coverImg}` alt=`${item.title}`)
+                            .box-1-4
+                                .location
+                                    i.fa-solid.fa-location-dot.icon
+                                    |  #{item.city}
+                                .price EGP #{item.price.toLocaleString("en-EG")}
+                                    - const diffDays = Math.floor(Math.abs(new Date() - item.createAt) / (1000 * 60 * 60 * 24));
+                                    - let createAt = `${diffDays} days ago`
+                                    - if(diffDays == 0) createAt= `Today`
+                                .createAt= createAt
+                            .box-2-4
+                                h3.title #{item.title}
+                                p.desc
+                                    | #{item.description.substring(0,120)}...
+                            .box-3-4
+                                a.btn.deleteItem-btn(href='#')
+                                    i.fa-solid.fa-trash.icon
+                                    |                           Delete
+          .profile-items--block
+            h3.no_of_items
+              | Favorites(
+              span= favItems.length
+              | )
+            .cards
+                each item in favItems
+                    .card
+                        a.body(href=`/item/${item._id}`)
+                            img.img(src=`https://unihub.azurewebsites.net/imgs/items/${item.coverImg}` alt=`${item.title}`)
+                            .box-1-4
+                                .location
+                                    i.fa-solid.fa-location-dot.icon
+                                    |  #{item.city}
+                                .price EGP #{item.price.toLocaleString("en-EG")}
+                                    - const diffDays = Math.floor(Math.abs(new Date() - item.createAt) / (1000 * 60 * 60 * 24));
+                                    - let createAt = `${diffDays} days ago`
+                                    - if(diffDays == 0) createAt= `Today`
+                                .createAt= createAt
+                            .box-2-4
+                                h3.title #{item.title}
+                                p.desc
+                                    | #{item.description.substring(0,120)}...
+                            .box-3-4
+                                a.btn.deleteItem-btn(href='#')
+                                    i.fa-solid.fa-trash.icon
+                                    |                           Remove
