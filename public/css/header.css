@@ -109,23 +109,6 @@ header .container .row--1 {
 .nav_login .link-item {
   margin-left: 2rem !important;
 }
-/* .nav_login .account__chat {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 4.5rem;
-  text-decoration: none;
-  padding: 0 2rem;
-  cursor: pointer;
-}
-.nav_login .account__chat .icon {
-  font-size: 2.5rem;
-  color: var(--color-btns);
-  transition: all 0.3s;
-}
-.nav_login .account__chat .icon:hover {
-  color: var(--color-secondary);
-} */
 
 .nav_login .account__image {
   text-decoration: none;
@@ -134,7 +117,6 @@ header .container .row--1 {
 }
 .nav_login .account__image img {
   max-width: 4.5rem;
-  width: 5rem;
   height: 4.5rem;
   transition: all 0.3s;
 }
@@ -164,8 +146,8 @@ header .container .row--1 {
   transition: all 0.3s;
 }
 .nav_login .account__menu .logout {
-  color: red;
   cursor: pointer;
+  color: red;
 }
 .nav_login .account__menu .account__menu_link:not(:last-child):hover {
   color: var(--color-secondary);
@@ -185,6 +167,36 @@ header .container .row--1 {
   justify-content: center;
   align-items: center;
   font-weight: 800;
+}
+@media (max-width: 992px) {
+  .nav_login {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  .nav_login .link-item {
+    margin: 0 !important;
+  }
+  .nav_login .account__image {
+    height: 8rem;
+    border: none !important;
+  }
+  .nav_login .account__image img {
+    max-width: 6rem;
+    height: 6rem;
+    margin: 0 !important;
+  }
+  .nav_login .account__menu {
+    background-color: transparent;
+    padding: 1rem 0;
+    margin: 1rem 0;
+    position: unset;
+    display: block;
+  }
+  .nav_login .account__menu .account__menu_link {
+    font-size: 1.6rem;
+    padding: 2rem;
+  }
 }
 /* End Nav after login */
 .nav {
@@ -222,6 +234,7 @@ header .container .row--1 {
     padding: 1.5rem 2rem 2rem 2rem;
     background-color: #e9e7e8;
     border-radius: 5px;
+    margin-top: 2rem;
     position: absolute;
     flex-direction: column;
     top: 6rem;

@@ -6,10 +6,8 @@ const logout = async () => {
       url: "https://unihub.azurewebsites.net/api/v1/users/logout",
       withCredentials: true,
     });
-    console.log(res);
     if (res.data.status === "Success") location.reload(true);
   } catch (err) {
-    console.log(err.response);
     alert("Error logging out! Try again.");
   }
 };
