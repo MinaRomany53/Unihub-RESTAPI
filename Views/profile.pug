@@ -1,0 +1,54 @@
+extends base
+
+block content  
+    main.profile
+      .container
+        .Profile-card
+          .seller__info
+            a.row--1(href=`/profile/${profile._id}`)
+              img.seller__info__img(src=`https://unihub.azurewebsites.net/imgs/users/${profile.photo}` alt='profile-img')
+              .seller__info__info
+                h3.name= profile.name
+                p.joinat
+                  | Member since 
+                  span=profile.joinAt.toLocaleString("en-EG", { month: "long" }) + " " + profile.joinAt.getFullYear()
+            .row--2
+              if user
+                div.btn.phone-btn
+                  i.fa-solid.fa-phone.icon
+                  |                     #{profile.phone}
+                a.btn.chat-btn(href='/chat')
+                  i.fa-regular.fa-comments.icon
+                  | Chat
+              else
+                a.btn.phone-btn(href='/login')
+                  i.fa-solid.fa-phone.icon
+                  |                     Show phone number
+                a.btn.chat-btn(href='/login')
+                  i.fa-regular.fa-comments.icon
+                  | Chat
+        .profile-items
+          h3.no_of_items
+            | Published ads (
+            span=approvedItems.length
+            | )
+          .cards
+                each item in approvedItems
+                    .card
+                        a.body(href=`/item/${item._id}`)
+                            img.img(src=`https://unihub.azurewebsites.net/imgs/items/${item.coverImg}` alt=`${item.title}`)
+                            .box-1-4
+                                .location
+                                    i.fa-solid.fa-location-dot.icon
+                                    |  #{item.city}
+                                .price EGP #{item.price.toLocaleString("en-EG")}
+                                    - const diffDays = Math.floor(Math.abs(new Date() - item.createAt) / (1000 * 60 * 60 * 24));
+                                    - let createAt = `${diffDays} days ago`
+                                    - if(diffDays == 0) createAt= `Today`
+                                .createAt= createAt
+                            .box-2-4
+                                h3.title #{item.title}
+                                p.desc
+                                    | #{item.description.substring(0,120)}...
+                            a.btn.details-btn(href=`/item/${item._id}`) More Details  
+

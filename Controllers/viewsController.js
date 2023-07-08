@@ -150,3 +150,41 @@ exports.getLoginPage = (req, res, next) => {
 exports.getSignupPage = (req, res, next) => {
   res.status(200).render("signup");
 };
+
+exports.getProfilePage = async (req, res, next) => {
+  try {
+    const profile = await User.findById(req.params.userId);
+
+    if (!profile) return next(new ApiErrors(404, `Sorry, This User Not Found`));
+
+    // const approvedItems = await Item.find({
+    //   user: user._id,
+    //   approved: { $ne: false },
+    // });
+
+    const approvedItems = profile.items.filter(
+      (item) => item.approved === true
+    );
+
+    const notApprovedItems = profile.items.filter(
+      (item) => item.approved === false
+    );
+
+    if (req.currentUser) {
+      if (req.currentUser._id.toString() === profile._id.toString()) {
+        return res.status(200).render("myProfile", {
+          profile: profile,
+          approvedItems: approvedItems,
+          notApprovedItems: notApprovedItems,
+        });
+      }
+    }
+
+    res.status(200).render("profile", {
+      profile: profile,
+      approvedItems: approvedItems,
+    });
+  } catch (err) {
+    next(err);
+  }
+};

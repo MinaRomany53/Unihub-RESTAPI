@@ -81,7 +81,7 @@ block content
           // End Related ads Section
         .col--2
           .seller__info
-            a.row--1(href='profile.html')
+            a.row--1(href=`/profile/${item.user._id}`)
               img.seller__info__img(src=`https://unihub.azurewebsites.net/imgs/users/${item.user.photo}` alt='seller-img')
               .seller__info__info
                 h3.name= item.user.name

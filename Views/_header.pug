@@ -20,7 +20,7 @@ header
           .link-item.account__image
             img.seller__info__img(src=`https://unihub.azurewebsites.net/imgs/users/${user.photo}` alt='Profile-img')
           .account__menu.account__menu-hidden
-            a.account__menu_link(href='/myProfile') View Profile
+            a.account__menu_link(href=`/Profile/${user._id}`) View Profile
             a.account__menu_link(href='/myAds') My Ads
             a.account__menu_link(href='#') Favourites
             a.account__menu_link(href='#') Messages

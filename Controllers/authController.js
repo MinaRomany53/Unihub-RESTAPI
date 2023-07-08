@@ -351,7 +351,7 @@ exports.isLoggedIn = async (req, res, next) => {
     }
     // Move to next middleware there is a user LoggedIn
     res.locals.user = currentUser; // use it to access current user data in the pug template
-
+    req.currentUser = currentUser;
     return next();
   }
   next();

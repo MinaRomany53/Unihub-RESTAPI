@@ -103,7 +103,8 @@ userSchema.pre(/^find/, function (next) {
   this.find({ active: { $ne: false } });
   this.populate({
     path: "items",
-    select: "_id title price description category city -user coverImg imgs",
+    select:
+      "_id title price description category city -user coverImg imgs approved createAt",
   });
   next();
 });
