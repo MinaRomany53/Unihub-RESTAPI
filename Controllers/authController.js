@@ -203,7 +203,7 @@ exports.forgetPassword = async (req, res, next) => {
     // Send it to user's email to reset password
     const resetURL = `${req.protocol}://${req.get(
       "host"
-    )}/api/v1/users/resetPassword/${token}`; //http://localhost:8000/api/v1/users/resetPassword/token
+    )}/users/resetPassword/${token}`; //http://localhost:8000/api/v1/users/resetPassword/token
     const options = {
       email: account.email,
       subject: "Reset Your Password - (Only Valid For 20 Minutes)",
@@ -213,7 +213,7 @@ exports.forgetPassword = async (req, res, next) => {
 
     // Send response
     res.status(200).json({
-      status: "success",
+      status: "Success",
       message: "E-mail Sent Successfully",
     });
   } catch (err) {
@@ -265,7 +265,7 @@ exports.resetPassword = async (req, res, next) => {
 
     // Send Response
     res.status(200).json({
-      status: "success",
+      status: "Success",
       date: req.date,
       message: "Your Password Changed Successfully",
       token: token,

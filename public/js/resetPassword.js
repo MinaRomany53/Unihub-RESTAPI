@@ -6,16 +6,13 @@ const hideAlert = () => {
   alertModel.classList.add("hidden");
 };
 
-const signup = async (email, password, name, phone, passwordConfirm) => {
+const resetPassword = async (password, passwordConfirm, token) => {
   try {
     const res = await axios({
-      method: "POST",
-      // url: "http://localhost:5000/api/v1/users/signup",
-      url: "https://unihub.azurewebsites.net/api/v1/users/signup",
+      method: "PATCH",
+      //   url: `http://localhost:5000/api/v1/users/resetPassword/${token}`,
+      url: `https://unihub.azurewebsites.net/api/v1/users/resetPassword/${token}`,
       data: {
-        name,
-        phone,
-        email,
         password,
         passwordConfirm,
       },
@@ -27,7 +24,7 @@ const signup = async (email, password, name, phone, passwordConfirm) => {
       alertModel.classList.add("show");
       alertModel.classList.remove("fail");
       alertModel.classList.add("success");
-      message.textContent = "Account Created Successfully 🥳";
+      message.textContent = "Your Password Reset Successfully 🥳";
       window.setTimeout(() => {
         location.assign("/");
       }, 1500);
@@ -44,19 +41,17 @@ const signup = async (email, password, name, phone, passwordConfirm) => {
 
 document.querySelector(".form").addEventListener("submit", (e) => {
   e.preventDefault();
-  const name = document.querySelector("#name").value;
-  const email = document.querySelector("#email").value;
-  const phone = document.querySelector("#phone").value;
   const password = document.querySelector("#password").value;
   const passwordConfirm = document.querySelector("#confirmpassword").value;
+  const token = document.querySelector(".form").getAttribute("data-token");
 
-  if (!email || !password || !name || !phone || !passwordConfirm) {
+  if (!password || !passwordConfirm) {
     alertModel.classList.remove("hidden");
     alertModel.classList.add("show");
     alertModel.classList.remove("success");
     alertModel.classList.add("fail");
     message.textContent = "Please complete all the required fields 😘";
   } else {
-    signup(email, password, name, phone, passwordConfirm);
+    resetPassword(password, passwordConfirm, token);
   }
 });

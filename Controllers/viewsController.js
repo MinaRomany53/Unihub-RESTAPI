@@ -190,3 +190,12 @@ exports.getLoginPage = (req, res, next) => {
 exports.getSignupPage = (req, res, next) => {
   res.status(200).render("signup");
 };
+
+exports.getForgetPasswordPage = (req, res, next) => {
+  res.status(200).render("forgetPassword");
+};
+exports.getResetPasswordPage = (req, res, next) => {
+  res.status(200).render("resetPassword", {
+    token: req.params.token,
+  });
+};

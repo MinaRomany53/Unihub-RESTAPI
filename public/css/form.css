@@ -9,7 +9,7 @@
   top: 0;
   left: 50%;
   transform: translate(-50%, 0);
-  width: 40rem;
+  width: 50rem;
   transition: all 0.3s ease-in-out;
 }
 .modal.hidden {

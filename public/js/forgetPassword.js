@@ -6,34 +6,31 @@ const hideAlert = () => {
   alertModel.classList.add("hidden");
 };
 
-const signup = async (email, password, name, phone, passwordConfirm) => {
+const sendEmail = async (email) => {
   try {
     const res = await axios({
       method: "POST",
-      // url: "http://localhost:5000/api/v1/users/signup",
-      url: "https://unihub.azurewebsites.net/api/v1/users/signup",
+      url: "http://localhost:5000/api/v1/users/forgetPassword",
+      // url: "https://unihub.azurewebsites.net/api/v1/users/forgetPassword",
       data: {
-        name,
-        phone,
         email,
-        password,
-        passwordConfirm,
       },
       withCredentials: true,
     });
-    // console.log(res);
+    console.log(res);
     if (res.data.status === "Success") {
       alertModel.classList.remove("hidden");
       alertModel.classList.add("show");
       alertModel.classList.remove("fail");
       alertModel.classList.add("success");
-      message.textContent = "Account Created Successfully 🥳";
-      window.setTimeout(() => {
-        location.assign("/");
-      }, 1500);
+      message.textContent =
+        "Email sent successfully ✅, Please check your email";
+      //   window.setTimeout(() => {
+      //     location.assign("/");
+      //   }, 1500);
     }
   } catch (err) {
-    // console.log(err);
+    console.log(err);
     alertModel.classList.remove("hidden");
     alertModel.classList.add("show");
     alertModel.classList.remove("success");
@@ -44,19 +41,14 @@ const signup = async (email, password, name, phone, passwordConfirm) => {
 
 document.querySelector(".form").addEventListener("submit", (e) => {
   e.preventDefault();
-  const name = document.querySelector("#name").value;
   const email = document.querySelector("#email").value;
-  const phone = document.querySelector("#phone").value;
-  const password = document.querySelector("#password").value;
-  const passwordConfirm = document.querySelector("#confirmpassword").value;
-
-  if (!email || !password || !name || !phone || !passwordConfirm) {
+  if (!email) {
     alertModel.classList.remove("hidden");
     alertModel.classList.add("show");
     alertModel.classList.remove("success");
     alertModel.classList.add("fail");
-    message.textContent = "Please complete all the required fields 😘";
+    message.textContent = "Please provide a valid email ";
   } else {
-    signup(email, password, name, phone, passwordConfirm);
+    sendEmail(email);
   }
 });
