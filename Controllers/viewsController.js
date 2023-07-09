@@ -143,14 +143,6 @@ exports.getItemPage = async (req, res, next) => {
   }
 };
 
-exports.getLoginPage = (req, res, next) => {
-  res.status(200).render("login");
-};
-
-exports.getSignupPage = (req, res, next) => {
-  res.status(200).render("signup");
-};
-
 exports.getProfilePage = async (req, res, next) => {
   try {
     const profile = await User.findById(req.params.userId).populate({
@@ -189,4 +181,12 @@ exports.getProfilePage = async (req, res, next) => {
   } catch (err) {
     next(err);
   }
+};
+
+exports.getLoginPage = (req, res, next) => {
+  res.status(200).render("login");
+};
+
+exports.getSignupPage = (req, res, next) => {
+  res.status(200).render("signup");
 };

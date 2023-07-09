@@ -98,7 +98,7 @@ app.use((err, req, res, next) => {
       });
     } else {
       res.status(err.statusCode).render("error", {
-        message: err.message,
+        // message: err.message,
       });
     }
   } else if (process.env.NODE_ENV === "production") {

@@ -3,26 +3,39 @@ extends base
 block content
     main.form--main
         .container
+            // alert modal
+            #alert_modal.modal.hidden
+                .modal-content
+                    span.close(onclick='hideAlert()') &times;
+                    p#message 
+
             .form-box
                 .image
                     img(src='/imgs/sign-up.svg' alt='login-svg')
                 form.form(action='' method='POST')
                     .field
-                        label(for='fullname') Full Name:
-                        input#fullname.input.input--text(type='text' name='fullname' placeholder='e.g. Mina Romany')
+                        label(for='name') Full Name
+                        input#name.input.input--text(type='text' name='name' placeholder='e.g. Mina Romany' required='')
+                        <small class="small-text">*At least 4 characters</small>
+                        <small class="small-text">*At most 20 characters</small>
+                        <small class="small-text">*Only alphabets Allowed</small>
                     .field
                         label(for='email') Email Address
-                        input#email(type='email' name='email' placeholder='e.g. user@domain.com')
+                        input#email(type='email' name='email' placeholder='e.g. user@domain.com' required='')
+                    .field
+                        label(for='phone') Phone Number
+                        input#phone(type='tel' name='phone' placeholder='Enter phone number' required='')
                     .field
                         label(for='password') Password
-                        input#password(type='password' placeholder='••••••••' name='password')
+                        input#password(type='password' placeholder='••••••••' name='password' required='')
+                        <small class="small-text">*At least 8 characters</small>
                     .field
                         label(for='confirmpassword') Confirm Password
-                        input#confirmpassword(type='password' placeholder='••••••••' name='confirmpassword')
+                        input#confirmpassword(type='password' placeholder='••••••••' name='confirmpassword' required='')
                         input.btn.submit_btn(type='submit' value='SIGN IN')
                 .form-footer
                     p Already have an Account?
                     a(href='/login') Log In
   
     // Script File
-
+    script(type='text/javascript' , src='/js/signup.js')
