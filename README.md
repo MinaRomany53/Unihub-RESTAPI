@@ -47,56 +47,56 @@ This router file in our application handles user authentication, user actions, a
 actions. The router has several endpoints that are organized into two groups: endpoints that do not require authentication and endpoints that require authentication.
 
 Endpoints that do not require authentication:
-• POST /signup: Allows users to sign up for the application.
-• POST /login: Allows users to log in to the application using their credentials.
-• POST /forgetPassword: Allows users to request a password reset email.
-• PATCH /resetPassword/:token: Allows users to reset their password using a token provided in a password reset email.
+- POST /signup: Allows users to sign up for the application.
+- POST /login: Allows users to log in to the application using their credentials.
+- POST /forgetPassword: Allows users to request a password reset email.
+- PATCH /resetPassword/:token: Allows users to reset their password using a token provided in a password reset email.
 
 Endpoints that require authentication:
-• PATCH /updatePassword: Allows users to update their password.
-• GET /me: Allows authenticated users to retrieve their own user profile.
-• PATCH /updateMe: Allows authenticated users to update their own user profile, including uploading a new profile photo.
-• DELETE /deleteMe: Allows authenticated users to delete their own account.
-• GET /: Allows authenticated admin users to retrieve a list of all users.
-• GET /:userId: Allows authenticated admin to retrieve information about a specific user by ID.
-• PATCH /:userId: Allows authenticated admin users to update information about a specific user by ID.
-• DELETE /:userId: Allows authenticated admin users to delete a specific user
+- PATCH /updatePassword: Allows users to update their password.
+- GET /me: Allows authenticated users to retrieve their own user profile.
+- PATCH /updateMe: Allows authenticated users to update their own user profile, including uploading a new profile photo.
+- DELETE /deleteMe: Allows authenticated users to delete their own account.
+- GET /: Allows authenticated admin users to retrieve a list of all users.
+- GET /:userId: Allows authenticated admin to retrieve information about a specific user by ID.
+- PATCH /:userId: Allows authenticated admin users to update information about a specific user by ID.
+- DELETE /:userId: Allows authenticated admin users to delete a specific user
 
 
 ## Items Endpoints
 This router file in our application handles item-related functionality. The router has several endpoints that are organized into different groups based on their functionality.
 
 Admin-only endpoints:
-• GET /Category-Stats: Allows authenticated admin to retrieve statistics related to item categories.
-• GET /Not-Approved-Items: Allows authenticated admin to retrieve a list of items that have not yet been approved.
-• PATCH /Not-Approved-Items/:itemId: Allows authenticated admin to approve an item that has not yet been approved by updating its status.
+- GET /Category-Stats: Allows authenticated admin to retrieve statistics related to item categories.
+- GET /Not-Approved-Items: Allows authenticated admin to retrieve a list of items that have not yet been approved.
+- PATCH /Not-Approved-Items/:itemId: Allows authenticated admin to approve an item that has not yet been approved by updating its status.
 
 Search functionality:
-• GET /search/:searchTitle: Allows users to use search feature.
+- GET /search/:searchTitle: Allows users to use search feature.
 
 Favorite items functionality:
-• GET /Fav-Items: Allows users to retrieve a list of their favorite items.
-• PATCH /Fav-Items/:itemId: Allows users to mark an item as a favorite or remove it.
+- GET /Fav-Items: Allows users to retrieve a list of their favorite items.
+- PATCH /Fav-Items/:itemId: Allows users to mark an item as a favorite or remove it.
 
 Endpoints for managing items:
-• GET /: Allows users to retrieve a list of all items in the application.
-• GET /:itemId: Allows users to retrieve information about a any item by ID.
-• POST /: Allows authenticated users to add a new item to the application by providing information about the item and uploading images.
-• PATCH /:itemId: Allows authenticated users to update information about a specific item by ID, including updating images.
-• DELETE /:itemId: Allows authenticated users to delete a specific item by ID. 
+- GET /: Allows users to retrieve a list of all items in the application.
+- GET /:itemId: Allows users to retrieve information about a any item by ID.
+- POST /: Allows authenticated users to add a new item to the application by providing information about the item and uploading images.
+- PATCH /:itemId: Allows authenticated users to update information about a specific item by ID, including updating images.
+- DELETE /:itemId: Allows authenticated users to delete a specific item by ID. 
 
 
 ## Chatrooms Endpoints
 This router file in our application handles chat room-related functionality. The router has several endpoints that are organized into different groups based on their functionality.
 
 Endpoints for managing chat rooms:
-• GET /: Allows users to retrieve a list of all chat rooms they are a member of.
-• POST /: Allows authenticated users to create a new chat room.
-• GET /:chatRoomId: Allows users to retrieve information about a specific chat.
-• DELETE /:chatRoomId: Allows users to delete a specific chat room by ID. 
+- GET /: Allows users to retrieve a list of all chat rooms they are a member of.
+- POST /: Allows authenticated users to create a new chat room.
+- GET /:chatRoomId: Allows users to retrieve information about a specific chat.
+- DELETE /:chatRoomId: Allows users to delete a specific chat room by ID. 
 
 Endpoints for managing messages:
-• POST /:chatRoomId/messages: Allows users to push a new message to chat.
+- POST /:chatRoomId/messages: Allows users to push a new message to chat.
 
 
 ## Architecture
