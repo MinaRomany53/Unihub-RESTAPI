@@ -36,7 +36,7 @@
   border-radius: 50%;
   border: 2px solid var(--color-btns);
   overflow: hidden;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   margin-right: 0;
 }
 .Profile-card .row--1 .seller__info__info {

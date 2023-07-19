@@ -10,7 +10,7 @@ const resetPassword = async (password, passwordConfirm, token) => {
   try {
     const res = await axios({
       method: "PATCH",
-      //   url: `http://localhost:5000/api/v1/users/resetPassword/${token}`,
+      // url: `http://localhost:5000/api/v1/users/resetPassword/${token}`,
       url: `https://unihub.azurewebsites.net/api/v1/users/resetPassword/${token}`,
       data: {
         password,

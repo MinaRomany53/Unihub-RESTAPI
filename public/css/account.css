@@ -1,3 +1,8 @@
+.Profile-card .row--1 .change_photo {
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+}
+
 .Profile-card .row--1 .seller__info__info .name {
   margin-bottom: 2rem;
   font-weight: 800;

@@ -7,11 +7,20 @@ block content
           .seller__info
             div.row--1
               img.seller__info__img(src=`https://unihub.azurewebsites.net/imgs/users/${profile.photo}` alt='profile-img')
+              a.change_photo(href='#')
+                i.fa-solid.fa-pen-to-square.icon
+                |                       Change your photo
               .seller__info__info
-                h3.name= profile.name
+                h3.name=profile.name
+                p.email
+                    i.fa-solid.fa-envelope.icon
+                    | #{profile.email}
+                p.phone
+                    i.fa-solid.fa-phone.icon
+                    | #{profile.phone}
                 p.joinat
-                  | Member since 
-                  span=profile.joinAt.toLocaleString("en-EG", { month: "long" }) + " " + profile.joinAt.getFullYear()
+                    | Member since 
+                    span=profile.joinAt.toLocaleString("en-EG", { month: "long" }) + " " + profile.joinAt.getFullYear()
             .row--2
               a.btn.editProfile-btn(href='#')
                 i.fa-solid.fa-pen-to-square.icon
