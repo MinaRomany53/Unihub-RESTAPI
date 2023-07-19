@@ -42,18 +42,83 @@ Implementation of JWT includes the following steps:
 ![jwt](https://github.com/MinaRomany53/Unihub-RESTAPI/assets/84532337/47d2e97c-a718-4e3e-8980-3fbb99a46108)
 
 
+## Users Endpoints
+This router file in our application handles user authentication, user actions, and admin
+actions. The router has several endpoints that are organized into two groups: endpoints that do not require authentication and endpoints that require authentication.
+
+Endpoints that do not require authentication:
+• POST /signup: Allows users to sign up for the application.
+• POST /login: Allows users to log in to the application using their credentials.
+• POST /forgetPassword: Allows users to request a password reset email.
+• PATCH /resetPassword/:token: Allows users to reset their password using a token provided in a password reset email.
+
+Endpoints that require authentication:
+• PATCH /updatePassword: Allows users to update their password.
+• GET /me: Allows authenticated users to retrieve their own user profile.
+• PATCH /updateMe: Allows authenticated users to update their own user profile, including uploading a new profile photo.
+• DELETE /deleteMe: Allows authenticated users to delete their own account.
+• GET /: Allows authenticated admin users to retrieve a list of all users.
+• GET /:userId: Allows authenticated admin to retrieve information about a specific user by ID.
+• PATCH /:userId: Allows authenticated admin users to update information about a specific user by ID.
+• DELETE /:userId: Allows authenticated admin users to delete a specific user
+
+
+## Items Endpoints
+This router file in our application handles item-related functionality. The router has several endpoints that are organized into different groups based on their functionality.
+
+Admin-only endpoints:
+• GET /Category-Stats: Allows authenticated admin to retrieve statistics related to item categories.
+• GET /Not-Approved-Items: Allows authenticated admin to retrieve a list of items that have not yet been approved.
+• PATCH /Not-Approved-Items/:itemId: Allows authenticated admin to approve an item that has not yet been approved by updating its status.
+
+Search functionality:
+• GET /search/:searchTitle: Allows users to use search feature.
+
+Favorite items functionality:
+• GET /Fav-Items: Allows users to retrieve a list of their favorite items.
+• PATCH /Fav-Items/:itemId: Allows users to mark an item as a favorite or remove it.
+
+Endpoints for managing items:
+• GET /: Allows users to retrieve a list of all items in the application.
+• GET /:itemId: Allows users to retrieve information about a any item by ID.
+• POST /: Allows authenticated users to add a new item to the application by providing information about the item and uploading images.
+• PATCH /:itemId: Allows authenticated users to update information about a specific item by ID, including updating images.
+• DELETE /:itemId: Allows authenticated users to delete a specific item by ID. 
+
+
+## Chatrooms Endpoints
+This router file in our application handles chat room-related functionality. The router has several endpoints that are organized into different groups based on their functionality.
+
+Endpoints for managing chat rooms:
+• GET /: Allows users to retrieve a list of all chat rooms they are a member of.
+• POST /: Allows authenticated users to create a new chat room.
+• GET /:chatRoomId: Allows users to retrieve information about a specific chat.
+• DELETE /:chatRoomId: Allows users to delete a specific chat room by ID. 
+
+Endpoints for managing messages:
+• POST /:chatRoomId/messages: Allows users to push a new message to chat.
+
+
 ## Architecture
 MVC (Model - View - Controller)
 
+![MVC](https://github.com/MinaRomany53/Unihub-RESTAPI/assets/84532337/559130e2-1cec-4a30-98bf-3351288e2270)
+
+
+## Class & ER Diagram
+
+![Class Diagram](https://github.com/MinaRomany53/Unihub-RESTAPI/assets/84532337/b8e7af58-0d77-4feb-801a-c6095045b95e)
+
+
 ## Built With 🛠
-- [Express](https://expressjs.com/) - Ktor is a framework to easily build connected applications – web applications, HTTP services, mobile and browser applications. Modern connected applications need to be asynchronous to provide the best experience to users, and Kotlin coroutines provide awesome facilities to do it in an easy and straightforward way.
-- [Exposed](https://github.com/JetBrains/Exposed) - Exposed is a lightweight SQL library on top of JDBC driver for Kotlin language. Exposed has two flavors of database access: typesafe SQL wrapping DSL and lightweight Data Access Objects (DAO).
-- [MySQL](https://www.postgresql.org/) - MySQl is a powerful, open source object-relational database system .
-- [Kotlinx-datetime](https://github.com/Kotlin/kotlinx-datetime) - A multiplatform Kotlin library for working with date and time.
-- [Bcrypt](https://github.com/patrickfav/bcrypt) - A Java standalone implementation of the bcrypt password hash function. Based on the Blowfish cipher it is the default password hash algorithm for OpenBSD and other systems including some Linux distributions.
-- [Apache Commons Email](https://github.com/apache/commons-email) - Apache Commons Email aims to provide an API for sending email. It is built on top of the JavaMail API, which it aims to simplify.
-- [Ktor OpenAPI/Swagger](https://github.com/LukasForst/ktor-openapi-generator) - The Ktor OpenAPI Generator is a library to automatically generate the descriptor as you route your ktor application.
-- [Valiktor](https://github.com/valiktor/valiktor) - Valiktor is a type-safe, powerful and extensible fluent DSL to validate objects in Kotlin
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - JavaScript (JS) is a lightweight interpreted programming language with first-class functions. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as Node.js. JavaScript is a prototype-based, multi-paradigm, single-threaded, dynamic language, supporting object-oriented, imperative, and declarative styles.
+- [Nodejs](https://nodejs.dev/en/) - Application backend and all the logic implemented using Node.js, a popular JavaScript runtime environment that allows for efficient and scalable server-side development.
+- [Express](https://expressjs.com/) - Express is a fast and minimalistic web framework for Node.js.
+- [MongoDB](https://www.mongodb.com/docs/manual/) - UniHub uses MongoDB, a NoSQL document-oriented database, to store and manage its data.
+- [Mongoose](https://mongoosejs.com/docs/guide.html) - Is an Object Data Modeling (ODM) library for MongoDB that provides a schema-based solution for application data management.
+- [Postman](https://www.postman.com/explore) - Postman is a powerful HTTP client for API testing and debugging.
+- [MongoDB Atlas](https://account.mongodb.com/account/login?n=%2Fv2%2F6273085c71b8ec3fd5f4f800&nextHash=%23metrics%2FreplicaSet%2F62730b486a9ed04896c41e6c%2Fexplorer%2Fnatours%2Ftours%2Ffind) - MongoDB Atlas is a fully managed cloud database service that provides the ability to deploy, operate, and scale MongoDB databases with ease.
+- [Azure](https://portal.azure.com/) - Microsoft Azure Is used for deployment and hosting of our API infrastructure. Azure provides a scalable and reliable cloud computing platform that ensures high availability and performance.
 
 
 ## Maintain and deploy by
